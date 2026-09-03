@@ -8,10 +8,9 @@
 <meta http-equiv="Expires" content="0">
 <title>Formuebygger</title>
 <style>
-input[type=range] { cursor: grab; }
-input[type=range]:active { cursor: grabbing; }
- 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   background: #0a0f0d;
   color: #e8ede9;
@@ -20,7 +19,6 @@ input[type=range]:active { cursor: grabbing; }
  
 .container { max-width: 820px; margin: 0 auto; }
  
-/* Header */
 .header { margin-bottom: 28px; }
 .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
 .logo-mark {
@@ -32,7 +30,6 @@ input[type=range]:active { cursor: grabbing; }
 .logo-name span { color: #1D9E75; }
 .header-sub { font-size: 13px; color: #8aaa90; margin-left: 46px; }
  
-/* Cards */
 .card {
   background: #111a14;
   border: 1px solid #1e2e22;
@@ -47,7 +44,6 @@ input[type=range]:active { cursor: grabbing; }
 }
 .card-title-accent { color: #1D9E75; }
  
-/* Budget */
 .budget-field label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 6px; }
 .budget-field input[type=number] {
   width: 100%; padding: 12px 14px;
@@ -58,7 +54,6 @@ input[type=range]:active { cursor: grabbing; }
 .budget-field input[type=number]:focus { border-color: #1D9E75; }
 .budget-field input[type=number]::placeholder { color: #2a3e2e; font-weight: 400; }
  
-/* Expenses dropdown */
 .expenses-toggle {
   width: 100%; background: #0d1510; border: 1px solid #1e2e22;
   border-radius: 10px; padding: 12px 16px; font-size: 13px; font-weight: 600;
@@ -109,7 +104,6 @@ input[type=range]:active { cursor: grabbing; }
 .result-row .amt { font-size: 24px; font-weight: 800; color: #1D9E75; }
 .hint { margin-top: 10px; font-size: 12px; color: #6a8e72; }
  
-/* Skydere */
 .controls { display: flex; flex-wrap: wrap; gap: 24px; }
 .ctrl { flex: 1; min-width: 160px; }
 .ctrl label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 8px; }
@@ -121,14 +115,12 @@ input[type=range]:active { cursor: grabbing; }
   margin-left: 6px; font-weight: 700; border: 1px solid #1D9E75;
 }
  
-/* Avanceret */
 .adv-grid { display: flex; flex-wrap: wrap; gap: 24px; }
 .adv-item { flex: 1; min-width: 180px; }
 .adv-item label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 8px; }
 .adv-item input[type=range] { width: 100%; accent-color: #3a7bd5; cursor: pointer; }
 .adv-item .val { font-size: 16px; font-weight: 800; color: #3a7bd5; margin-top: 6px; }
  
-/* Skat */
 .tax-btns { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
 .tax-btn {
   padding: 7px 12px; border-radius: 8px;
@@ -152,7 +144,6 @@ input[type=range]:active { cursor: grabbing; }
 .tax-extra p { font-size: 12px; color: #2a3e2e; margin-top: 8px; line-height: 1.6; }
 .tax-info { font-size: 12px; color: #2a5e3a; margin-top: 8px; }
  
-/* Vis-toggle */
 .toggle-row { display: flex; gap: 8px; }
 .toggle-btn {
   padding: 6px 14px; border-radius: 8px;
@@ -161,7 +152,6 @@ input[type=range]:active { cursor: grabbing; }
 }
 .toggle-btn.active { background: #0d2e1e; color: #1D9E75; border-color: #1D9E75; }
  
-/* Milepæle */
 .milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 @media (max-width: 600px) {
   .milestones { grid-template-columns: repeat(2, 1fr); }
@@ -184,7 +174,6 @@ input[type=range]:active { cursor: grabbing; }
 .metric .sub { font-size: 11px; color: #2a3e2e; margin-top: 4px; }
 .metric .gain { font-size: 11px; color: #1D9E75; margin-top: 3px; font-weight: 700; }
  
-/* Grafer */
 .legend { display: flex; gap: 16px; font-size: 12px; color: #8aaa90; margin-bottom: 12px; flex-wrap: wrap; }
 .legend span { display: flex; align-items: center; gap: 5px; }
 .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
@@ -205,7 +194,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     <div class="header-sub">Byg din fremtidige formue — se hvad rentes rente gør over tid</div>
   </div>
  
-  <!-- BUDGET -->
   <div class="card">
     <div class="card-title"><span class="card-title-accent">01</span> Budget & Rådighedsbeløb</div>
     <div style="margin-bottom:14px;">
@@ -214,7 +202,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
         <input type="number" id="netSalary" placeholder="eks. 20.000" step="500" oninput="calcDisposable()">
       </div>
     </div>
- 
     <button class="expenses-toggle" id="expToggle" onclick="toggleExpenses()">
       <span>Faste udgifter <span id="expTotal" style="color:#1D9E75;font-weight:700;"></span></span>
       <span class="arrow">▼</span>
@@ -223,7 +210,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
       <div id="expenseList"></div>
       <button class="add-exp-btn" onclick="addExpense()">＋ Tilføj udgift</button>
     </div>
- 
     <div class="result-row">
       <div>
         <div class="lbl">Månedligt rådighedsbeløb</div>
@@ -234,7 +220,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     <div class="hint">💡 Opdaterer automatisk skyderen for månedlig opsparing</div>
   </div>
  
-  <!-- PARAMETRE -->
   <div class="card">
     <div class="card-title"><span class="card-title-accent">02</span> Investeringsparametre</div>
     <div class="controls">
@@ -262,11 +247,9 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     </div>
   </div>
  
-  <!-- AVANCERET -->
   <div class="card">
     <div class="card-title"><span class="card-title-accent">03</span> Avancerede indstillinger</div>
     <div class="adv-grid">
- 
       <div class="adv-item" style="min-width:260px;">
         <label>Skattesats på afkast</label>
         <div class="tax-btns">
@@ -299,7 +282,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
         </div>
         <div class="tax-info" id="taxInfo"></div>
       </div>
- 
       <div class="adv-item">
         <label>Forventet inflation</label>
         <input type="range" id="inflation" min="0" max="6" step="0.5" value="2" oninput="update()">
@@ -312,7 +294,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
           </div>
         </div>
       </div>
- 
       <div class="adv-item">
         <label>Årlig stigning i indbetaling</label>
         <input type="range" id="salaryGrowth" min="0" max="8" step="0.5" value="3" oninput="update()">
@@ -322,7 +303,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     </div>
   </div>
  
-  <!-- MILEPÆLE -->
   <div class="card">
     <div class="card-title">
       <span class="card-title-accent">04</span> Milepæle
@@ -336,7 +316,6 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     </div>
   </div>
  
-  <!-- GRAFER -->
   <div class="card">
     <div class="card-title"><span class="card-title-accent">05</span> Din formue over tid</div>
     <div class="legend">
@@ -528,10 +507,6 @@ function fmtM(n) {
   return Math.round(n).toLocaleString('da-DK') + ' kr';
 }
  
-const chartDefaults = {
-  color: '#4a5e50',
-  borderColor: '#1e2e22',
-};
 Chart.defaults.color = '#4a5e50';
  
 const barChart = new Chart(document.getElementById('barChart'), {
@@ -579,14 +554,12 @@ function update() {
   updateSplitFromStart(start);
   const grossRate  = +document.getElementById('rate').value;
   const salaryGrow = +document.getElementById('salaryGrowth').value;
- 
   document.getElementById('monthlyInput').value = monthly;
   document.getElementById('startInput').value  = start;
   document.getElementById('rate-val').textContent         = grossRate.toFixed(1).replace('.',',')+' %';
   document.getElementById('inflation-val').textContent    = (+document.getElementById('inflation').value).toFixed(1).replace('.',',')+' %';
   document.getElementById('salaryGrowth-val').textContent = salaryGrow.toFixed(1).replace('.',',')+' %';
   document.getElementById('taxInfo').textContent          = '';
- 
   [5,10,15,20].forEach(y => {
     const v  = calcFV(start, monthly, grossRate, y, salaryGrow);
     const p  = calcPaid(start, monthly, y, salaryGrow);
@@ -595,12 +568,10 @@ function update() {
     document.getElementById('paid'+y).textContent = 'indbetalt: '+fmtM(ap);
     document.getElementById('gain'+y).textContent = '＋'+fmtM(av-ap)+' afkast';
   });
- 
   barChart.data.datasets[0].data = [5,10,15,20].map(y => adjInfl(start, y));
   barChart.data.datasets[1].data = [5,10,15,20].map(y => adjInfl(calcPaid(start,monthly,y,salaryGrow)-start, y));
   barChart.data.datasets[2].data = [5,10,15,20].map(y => adjInfl(calcFV(start,monthly,grossRate,y,salaryGrow)-calcPaid(start,monthly,y,salaryGrow), y));
   barChart.update();
- 
   const { portfolio, paid } = calcYearlyData(start, monthly, grossRate, 20, salaryGrow);
   lineChart.data.labels = Array.from({length:21},(_,i)=>'År '+i);
   lineChart.data.datasets[0].data = portfolio.map((v,i) => adjInfl(v,i));
