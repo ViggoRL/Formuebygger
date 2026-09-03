@@ -12,7 +12,7 @@
  
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  background: #0a0f0d;
+  background: #0d1510;
   color: #ffffff;
   padding: 24px;
 }
@@ -28,36 +28,36 @@ body {
 }
 .logo-name { font-size: 20px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
 .logo-name span { color: #1D9E75; }
-.header-sub { font-size: 13px; color: #c8d0c8; margin-left: 46px; }
+.header-sub { font-size: 13px; color: #e8e8e8; margin-left: 46px; }
  
 .card {
-  background: #111a14;
-  border: 1px solid #2d4a34;
+  background: #141e17;
+  border: 1px solid #3a5a40;
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 14px;
 }
 .card-title {
-  font-size: 13px; font-weight: 700; color: #c8d0c8;
+  font-size: 13px; font-weight: 700; color: #e8e8e8;
   text-transform: uppercase; letter-spacing: 0.8px;
   margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
 }
 .card-title-accent { color: #1D9E75; }
  
-.budget-field label { display: block; font-size: 12px; color: #c8d0c8; margin-bottom: 6px; }
+.budget-field label { display: block; font-size: 12px; color: #e8e8e8; margin-bottom: 6px; }
 .budget-field input[type=number] {
   width: 100%; padding: 12px 14px;
-  background: #111a14; border: 1px solid #909090;
+  background: #141e17; border: 1px solid #aaaaaa;
   border-radius: 10px; font-size: 16px; font-weight: 700;
   color: #ffffff; outline: none; transition: border 0.2s;
 }
 .budget-field input[type=number]:focus { border-color: #1D9E75; }
-.budget-field input[type=number]::placeholder { color: #c8d0c8; font-weight: 400; }
+.budget-field input[type=number]::placeholder { color: #e8e8e8; font-weight: 400; }
  
 .expenses-toggle {
-  width: 100%; background: #0d1510; border: 1px solid #2d4a34;
+  width: 100%; background: #1a2a1e; border: 1px solid #3a5a40;
   border-radius: 10px; padding: 12px 16px; font-size: 13px; font-weight: 600;
-  color: #c8d0c8; cursor: pointer; display: flex; justify-content: space-between;
+  color: #e8e8e8; cursor: pointer; display: flex; justify-content: space-between;
   align-items: center; margin-bottom: 0; transition: all 0.2s;
 }
 .expenses-toggle:hover { border-color: #1D9E75; color: #1D9E75; }
@@ -65,7 +65,7 @@ body {
 .expenses-toggle.open { border-radius: 10px 10px 0 0; border-color: #1D9E75; color: #1D9E75; }
 .expenses-toggle.open .arrow { transform: rotate(180deg); }
 .expenses-panel {
-  display: none; background: #0d1510;
+  display: none; background: #1a2a1e;
   border: 1px solid #1D9E75; border-top: none;
   border-radius: 0 0 10px 10px; padding: 14px; margin-bottom: 12px;
 }
@@ -73,40 +73,40 @@ body {
  
 .expense-item { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
 .expense-item input[type=text] {
-  flex: 1.5; padding: 9px 12px; background: #111a14;
-  border: 1px solid #2d4a34; border-radius: 8px;
+  flex: 1.5; padding: 9px 12px; background: #141e17;
+  border: 1px solid #3a5a40; border-radius: 8px;
   font-size: 13px; outline: none; color: #c0c0c0; transition: border 0.2s;
 }
 .expense-item input[type=text]:focus { border-color: #1D9E75; }
 .expense-item input[type=number] {
-  flex: 1; padding: 9px 12px; background: #111a14;
-  border: 1px solid #2d4a34; border-radius: 8px;
+  flex: 1; padding: 9px 12px; background: #141e17;
+  border: 1px solid #3a5a40; border-radius: 8px;
   font-size: 13px; font-weight: 700; outline: none;
   min-width: 80px; color: #ffffff; transition: border 0.2s;
 }
 .expense-item input[type=number]:focus { border-color: #1D9E75; }
-.del-btn { background: none; border: none; color: #909090; font-size: 20px; cursor: pointer; padding: 2px 6px; transition: color 0.2s; }
+.del-btn { background: none; border: none; color: #aaaaaa; font-size: 20px; cursor: pointer; padding: 2px 6px; transition: color 0.2s; }
 .del-btn:hover { color: #e55; }
 .add-exp-btn {
   width: 100%; background: none; border: 1px dashed #2d4a34;
-  border-radius: 8px; padding: 8px; font-size: 13px; color: #909090;
+  border-radius: 8px; padding: 8px; font-size: 13px; color: #aaaaaa;
   cursor: pointer; transition: all 0.2s; margin-top: 4px;
 }
 .add-exp-btn:hover { border-color: #1D9E75; color: #1D9E75; }
  
 .result-row {
-  background: #111a14; border: 1px solid #909090;
+  background: #141e17; border: 1px solid #aaaaaa;
   border-radius: 12px; padding: 16px 18px;
   display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
 }
-.result-row .lbl { font-size: 13px; color: #c8d0c8; }
-.result-row .lbl-sub { font-size: 11px; color: #909090; margin-top: 2px; }
+.result-row .lbl { font-size: 13px; color: #e8e8e8; }
+.result-row .lbl-sub { font-size: 11px; color: #aaaaaa; margin-top: 2px; }
 .result-row .amt { font-size: 24px; font-weight: 800; color: #1D9E75; }
-.hint { margin-top: 10px; font-size: 12px; color: #909090; }
+.hint { margin-top: 10px; font-size: 12px; color: #aaaaaa; }
  
 .controls { display: flex; flex-wrap: wrap; gap: 24px; }
 .ctrl { flex: 1; min-width: 160px; }
-.ctrl label { display: block; font-size: 12px; color: #c8d0c8; margin-bottom: 8px; }
+.ctrl label { display: block; font-size: 12px; color: #e8e8e8; margin-bottom: 8px; }
 .ctrl input[type=range] { width: 100%; accent-color: #1D9E75; cursor: pointer; height: 4px; }
 .ctrl .val { font-size: 18px; font-weight: 800; color: #ffffff; margin-top: 6px; }
 .info-tag {
@@ -117,38 +117,38 @@ body {
  
 .adv-grid { display: flex; flex-wrap: wrap; gap: 24px; }
 .adv-item { flex: 1; min-width: 180px; }
-.adv-item label { display: block; font-size: 12px; color: #c8d0c8; margin-bottom: 8px; }
+.adv-item label { display: block; font-size: 12px; color: #e8e8e8; margin-bottom: 8px; }
 .adv-item input[type=range] { width: 100%; accent-color: #3a7bd5; cursor: pointer; }
 .adv-item .val { font-size: 16px; font-weight: 800; color: #3a7bd5; margin-top: 6px; }
  
 .tax-btns { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
 .tax-btn {
   padding: 7px 12px; border-radius: 8px;
-  border: 1px solid #909090; background: #0d1510;
-  font-size: 12px; font-weight: 600; cursor: pointer; color: #c8d0c8; transition: all 0.2s;
+  border: 1px solid #aaaaaa; background: #1a2a1e;
+  font-size: 12px; font-weight: 600; cursor: pointer; color: #e8e8e8; transition: all 0.2s;
 }
 .tax-btn.active { background: #0d2e1e; color: #1D9E75; border-color: #1D9E75; }
 .tax-extra {
-  display: none; background: #0d1510; border: 1px solid #2d4a34;
+  display: none; background: #1a2a1e; border: 1px solid #3a5a40;
   border-radius: 10px; padding: 12px; margin-top: 6px;
 }
 .tax-extra.show { display: block; }
-.tax-extra label { font-size: 12px; color: #c8d0c8; display: block; margin-bottom: 5px; }
+.tax-extra label { font-size: 12px; color: #e8e8e8; display: block; margin-bottom: 5px; }
 .tax-extra input {
-  width: 90px; padding: 7px 10px; background: #111a14;
-  border: 1px solid #2d4a34; border-radius: 8px;
+  width: 90px; padding: 7px 10px; background: #141e17;
+  border: 1px solid #3a5a40; border-radius: 8px;
   font-size: 14px; font-weight: 700; outline: none; color: #ffffff;
 }
 .tax-extra .split-row { display: flex; gap: 12px; flex-wrap: wrap; }
 .tax-extra .split-field { flex: 1; min-width: 110px; }
-.tax-extra p { font-size: 12px; color: #909090; margin-top: 8px; line-height: 1.6; }
-.tax-info { font-size: 12px; color: #909090; margin-top: 8px; }
+.tax-extra p { font-size: 12px; color: #aaaaaa; margin-top: 8px; line-height: 1.6; }
+.tax-info { font-size: 12px; color: #aaaaaa; margin-top: 8px; }
  
 .toggle-row { display: flex; gap: 8px; }
 .toggle-btn {
   padding: 6px 14px; border-radius: 8px;
-  border: 1px solid #909090; background: #0d1510;
-  font-size: 12px; font-weight: 600; cursor: pointer; color: #c8d0c8; transition: all 0.2s;
+  border: 1px solid #aaaaaa; background: #1a2a1e;
+  font-size: 12px; font-weight: 600; cursor: pointer; color: #e8e8e8; transition: all 0.2s;
 }
 .toggle-btn.active { background: #0d2e1e; color: #1D9E75; border-color: #1D9E75; }
  
@@ -161,7 +161,7 @@ body {
   .metric .num { font-size: 15px; }
 }
 .metric {
-  background: #0d1510; border: 1px solid #2d4a34;
+  background: #1a2a1e; border: 1px solid #3a5a40;
   border-radius: 12px; padding: 16px;
   transition: border-color 0.2s;
 }
@@ -171,16 +171,16 @@ body {
   text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
 }
 .metric .num { font-size: 16px; font-weight: 800; color: #ffffff; }
-.metric .sub { font-size: 11px; color: #909090; margin-top: 4px; }
+.metric .sub { font-size: 11px; color: #aaaaaa; margin-top: 4px; }
 .metric .gain { font-size: 11px; color: #1D9E75; margin-top: 3px; font-weight: 700; }
  
-.legend { display: flex; gap: 16px; font-size: 12px; color: #c8d0c8; margin-bottom: 12px; flex-wrap: wrap; }
+.legend { display: flex; gap: 16px; font-size: 12px; color: #e8e8e8; margin-bottom: 12px; flex-wrap: wrap; }
 .legend span { display: flex; align-items: center; gap: 5px; }
 .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
 .chart-wrap { position: relative; width: 100%; height: 280px; margin-bottom: 8px; }
 .chart-wrap2 { position: relative; width: 100%; height: 220px; }
-hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
-.footer { font-size: 11px; color: #909090; text-align: center; margin-top: 10px; line-height: 1.6; }
+hr { border: none; border-top: 1px solid #3a5a40; margin: 20px 0; }
+.footer { font-size: 11px; color: #aaaaaa; text-align: center; margin-top: 10px; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -227,7 +227,7 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
         <label>Månedlig opsparing <span class="info-tag" id="autoTag" style="display:none">AUTO</span></label>
         <input type="range" id="monthly" min="0" max="50000" step="500" value="0" oninput="clearAuto();syncSliderToInput('monthly','monthlyInput');update()">
         <input type="number" id="monthlyInput" value="0" min="0" max="50000"
-          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:18px;font-weight:800;color:#ffffff;outline:none;transition:border 0.2s;"
+          style="margin-top:6px;width:100%;padding:8px 12px;background:#1a2a1e;border:1px solid #3a5a40;border-radius:8px;font-size:18px;font-weight:800;color:#ffffff;outline:none;transition:border 0.2s;"
           onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
           oninput="clearAuto();syncInputToSlider('monthlyInput','monthly');update()">
       </div>
@@ -235,7 +235,7 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
         <label>Startkapital</label>
         <input type="range" id="start" min="0" max="2000000" step="10000" value="0" oninput="syncSliderToInput('start','startInput');update()">
         <input type="number" id="startInput" value="0" min="0" max="2000000"
-          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:18px;font-weight:800;color:#ffffff;outline:none;transition:border 0.2s;"
+          style="margin-top:6px;width:100%;padding:8px 12px;background:#1a2a1e;border:1px solid #3a5a40;border-radius:8px;font-size:18px;font-weight:800;color:#ffffff;outline:none;transition:border 0.2s;"
           onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
           oninput="syncInputToSlider('startInput','start');update()">
       </div>
@@ -243,7 +243,7 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
         <label>Bruttoafkast (før skat)</label>
         <input type="range" id="rate" min="1" max="15" step="0.5" value="7" oninput="update()">
         <div class="val" id="rate-val">7,0 %</div>
-        <div style="margin-top:6px;font-size:12px;color:#909090;line-height:1.5;">Global indeksfond: historisk 8-10% nominelt, 5-7% efter inflation</div>
+        <div style="margin-top:6px;font-size:12px;color:#aaaaaa;line-height:1.5;">Global indeksfond: historisk 8-10% nominelt, 5-7% efter inflation</div>
       </div>
     </div>
   </div>
@@ -259,28 +259,28 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
     <div id="goalSection" style="display:none;">
       <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;">
         <div style="flex:1;min-width:160px;">
-          <label style="display:block;font-size:12px;color:#c8d0c8;margin-bottom:6px;">Ønsket formue</label>
+          <label style="display:block;font-size:12px;color:#e8e8e8;margin-bottom:6px;">Ønsket formue</label>
           <input type="number" id="goalAmount" placeholder="eks. 5.000.000" step="100000"
-            style="width:100%;padding:10px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:16px;font-weight:700;color:#ffffff;outline:none;transition:border 0.2s;"
+            style="width:100%;padding:10px 12px;background:#1a2a1e;border:1px solid #3a5a40;border-radius:8px;font-size:16px;font-weight:700;color:#ffffff;outline:none;transition:border 0.2s;"
             onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
             oninput="calcGoal()">
         </div>
         <div style="flex:1;min-width:160px;">
-          <label style="display:block;font-size:12px;color:#c8d0c8;margin-bottom:6px;">Inden for (år)</label>
+          <label style="display:block;font-size:12px;color:#e8e8e8;margin-bottom:6px;">Inden for (år)</label>
           <input type="number" id="goalYears" placeholder="eks. 10" min="1" max="50" value="10"
-            style="width:100%;padding:10px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:16px;font-weight:700;color:#ffffff;outline:none;transition:border 0.2s;"
+            style="width:100%;padding:10px 12px;background:#1a2a1e;border:1px solid #3a5a40;border-radius:8px;font-size:16px;font-weight:700;color:#ffffff;outline:none;transition:border 0.2s;"
             onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
             oninput="calcGoal()">
         </div>
       </div>
-      <div style="background:#0d1510;border:1px solid #2d4a34;border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;">
+      <div style="background:#1a2a1e;border:1px solid #3a5a40;border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;">
         <div>
-          <div style="font-size:13px;color:#c8d0c8;">Du skal spare op om måneden</div>
-          <div style="font-size:11px;color:#909090;margin-top:2px;">Baseret på startkapital og afkast fra sektion 02</div>
+          <div style="font-size:13px;color:#e8e8e8;">Du skal spare op om måneden</div>
+          <div style="font-size:11px;color:#aaaaaa;margin-top:2px;">Baseret på startkapital og afkast fra sektion 02</div>
         </div>
         <div style="font-size:24px;font-weight:800;color:#1D9E75;" id="goalResult">— kr</div>
       </div>
-      <div style="margin-top:10px;font-size:12px;color:#909090;">💡 Justér startkapital og afkast i sektion 02 for at se hvordan det påvirker dit månedlige beløb</div>
+      <div style="margin-top:10px;font-size:12px;color:#aaaaaa;">💡 Justér startkapital og afkast i sektion 02 for at se hvordan det påvirker dit månedlige beløb</div>
     </div>
   </div>
  
@@ -310,24 +310,24 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
               <input type="number" id="freeAmount" value="264100" step="1000" oninput="onFreeChange()"> kr
             </div>
           </div>
-          <p style="color:#909090;">Aktiesparekonto beskattes 17%, frie midler 27%/42%</p>
+          <p style="color:#aaaaaa;">Aktiesparekonto beskattes 17%, frie midler 27%/42%</p>
         </div>
         <div class="tax-extra" id="extraCustom">
           <div class="split-row">
             <div class="split-field">
               <label>Aktiesparekonto</label>
-              <div style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;padding:7px 10px;background:#111a14;border:1px solid #2d4a34;border-radius:8px;" id="customAskDisplay">174.200 kr</div>
+              <div style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;padding:7px 10px;background:#1a2a1e;border:1px solid #3a5a40;border-radius:8px;" id="customAskDisplay">174.200 kr</div>
               <label>Skattesats</label>
               <input type="number" id="customAskRate" value="17" min="0" max="60" oninput="update()"> %
             </div>
             <div class="split-field">
               <label>Frie midler</label>
-              <div style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;padding:7px 10px;background:#111a14;border:1px solid #2d4a34;border-radius:8px;" id="customFreeDisplay">0 kr</div>
+              <div style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;padding:7px 10px;background:#1a2a1e;border:1px solid #3a5a40;border-radius:8px;" id="customFreeDisplay">0 kr</div>
               <label>Skattesats</label>
               <input type="number" id="customFreeRate" value="0" min="0" max="60" oninput="update()"> %
             </div>
           </div>
-          <p style="color:#909090;margin-top:8px;">Sæt skattesats til 0% for akkumulerende fonde med realisationsbeskatning</p>
+          <p style="color:#aaaaaa;margin-top:8px;">Sæt skattesats til 0% for akkumulerende fonde med realisationsbeskatning</p>
         </div>
         <div class="tax-info" id="taxInfo"></div>
       </div>
@@ -341,15 +341,15 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
             <button class="toggle-btn active" id="btn-nominal" onclick="setView('nominal')">Nominelt</button>
             <button class="toggle-btn" id="btn-real" onclick="setView('real')">Reel købekraft</button>
           </div>
-          <div id="nominal-hint" style="margin-top:8px;font-size:12px;color:#909090;line-height:1.5;">Viser fremtidige kroner — tager ikke højde for forventet inflation</div>
-          <div id="real-hint" style="display:none;margin-top:8px;font-size:12px;color:#909090;line-height:1.5;">Viser hvad pengene er værd i nutidens kroner. Sæt inflation til 2-3%</div>
+          <div id="nominal-hint" style="margin-top:8px;font-size:12px;color:#aaaaaa;line-height:1.5;">Viser fremtidige kroner — tager ikke højde for forventet inflation</div>
+          <div id="real-hint" style="display:none;margin-top:8px;font-size:12px;color:#aaaaaa;line-height:1.5;">Viser hvad pengene er værd i nutidens kroner. Sæt inflation til 2-3%</div>
         </div>
       </div>
       <div class="adv-item">
         <label>Årlig stigning i indbetaling</label>
         <input type="range" id="salaryGrowth" min="0" max="8" step="0.5" value="3" oninput="update()">
         <div class="val" id="salaryGrowth-val">3,0 %</div>
-        <div style="margin-top:8px;font-size:12px;color:#909090;line-height:1.5;">Sæt til din forventede lønstigning — typisk 2-4% om året</div>
+        <div style="margin-top:8px;font-size:12px;color:#aaaaaa;line-height:1.5;">Sæt til din forventede lønstigning — typisk 2-4% om året</div>
       </div>
     </div>
   </div><!-- end advContent -->
@@ -358,7 +358,7 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
   <div class="card">
     <div class="card-title">
       <span class="card-title-accent">04</span> Milepæle
-      <span id="viewLabel" style="font-size:11px;color:#909090;font-weight:400;margin-left:4px;">— nominelle kroner</span>
+      <span id="viewLabel" style="font-size:11px;color:#aaaaaa;font-weight:400;margin-left:4px;">— nominelle kroner</span>
     </div>
     <div class="milestones">
       <div class="metric"><div class="year">5 år</div><div class="num" id="v5">—</div><div class="sub" id="paid5">—</div><div class="gain" id="gain5">—</div></div>
@@ -658,7 +658,7 @@ function fmtM(n) {
   return Math.round(n).toLocaleString('da-DK') + ' kr';
 }
  
-Chart.defaults.color = '#c8d0c8';
+Chart.defaults.color = '#e8e8e8';
  
 const barChart = new Chart(document.getElementById('barChart'), {
   type: 'bar',
@@ -674,8 +674,8 @@ const barChart = new Chart(document.getElementById('barChart'), {
     responsive: true, maintainAspectRatio: false,
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('da-DK')+' kr' }}},
     scales: {
-      x: { stacked: true, grid: { display: false }, ticks: { color: '#c8d0c8' }},
-      y: { stacked: true, grid: { color: '#2d4a34' }, ticks: { color: '#c8d0c8', callback: v => (v/1000000).toFixed(1)+' mio.' }}
+      x: { stacked: true, grid: { display: false }, ticks: { color: '#e8e8e8' }},
+      y: { stacked: true, grid: { color: '#2d4a34' }, ticks: { color: '#e8e8e8', callback: v => (v/1000000).toFixed(1)+' mio.' }}
     }
   }
 });
@@ -693,8 +693,8 @@ const lineChart = new Chart(document.getElementById('lineChart'), {
     responsive: true, maintainAspectRatio: false,
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('da-DK')+' kr' }}},
     scales: {
-      x: { grid: { display: false }, ticks: { maxTicksLimit: 11, font: { size: 11 }, color: '#c8d0c8' }},
-      y: { min: 0, grid: { color: '#2d4a34' }, ticks: { color: '#c8d0c8', callback: v => (v/1000000).toFixed(1)+' mio.' }}
+      x: { grid: { display: false }, ticks: { maxTicksLimit: 11, font: { size: 11 }, color: '#e8e8e8' }},
+      y: { min: 0, grid: { color: '#2d4a34' }, ticks: { color: '#e8e8e8', callback: v => (v/1000000).toFixed(1)+' mio.' }}
     }
   }
 });
@@ -743,3 +743,4 @@ update();
 </script>
 </body>
 </html>
+ 
