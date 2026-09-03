@@ -467,7 +467,7 @@ function setView(mode) {
   document.getElementById('btn-real').classList.toggle('active', mode === 'real');
   document.getElementById('nominal-hint').style.display = mode === 'nominal' ? 'block' : 'none';
   document.getElementById('real-hint').style.display = mode === 'real' ? 'block' : 'none';
-  document.getElementById('viewLabel').textContent = mode === 'nominal' ? '— nominelle kroner' : '— reel købekraft (dagens kroner)';
+  document.getElementById('viewLabel').textContent = mode === 'nominal' ? '— nominelle kroner' : '— reel købekraft';
   update();
 }
  
