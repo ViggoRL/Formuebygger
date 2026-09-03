@@ -254,33 +254,30 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
       <div class="adv-item" style="min-width:260px;">
         <label>Skattesats på afkast</label>
         <div class="tax-btns">
-          <button class="tax-btn active" onclick="setTax('ask',this)">ASK 17%</button>
+          <button class="tax-btn active" onclick="setTax('split',this)">Aktiesparekonto & Frie midler</button>
           <button class="tax-btn" onclick="setTax('free',this)">Frie midler</button>
-          <button class="tax-btn" onclick="setTax('split',this)">Blandet</button>
           <button class="tax-btn" onclick="setTax('custom',this)">Brugerdefineret</button>
         </div>
-        <div class="tax-extra" id="extraAsk">
-          <p style="color:#6a8e72;">ASK: 17% lagerbeskatning, maks. indskud 174.200 kr (2026).</p>
-        </div>
+        <div class="tax-extra show" id="extraAsk" style="display:none"></div>
         <div class="tax-extra" id="extraFree">
           <p style="color:#6a8e72;">Frie midler: 27% op til 79.400 kr aktieindkomst, 42% herover (2026).</p>
         </div>
-        <div class="tax-extra" id="extraSplit">
+        <div class="tax-extra show" id="extraSplit">
           <div class="split-row">
             <div class="split-field">
-              <label>Beløb i ASK (maks. 174.200 kr)</label>
-              <input type="number" id="askAmount" value="174200" step="1000" oninput="update()"> kr
+              <label>Beløb i Aktiesparekonto (maks. 174.200 kr)</label>
+              <input type="number" id="askAmount" value="174200" step="1000" oninput="onAskChange()"> kr
             </div>
             <div class="split-field">
               <label>Beløb i frie midler</label>
-              <input type="number" id="freeAmount" value="264100" step="1000" oninput="update()"> kr
+              <input type="number" id="freeAmount" value="264100" step="1000" oninput="onFreeChange()"> kr
             </div>
           </div>
-          <p style="color:#6a8e72;">ASK beskattes 17%, frie midler 27%/42%</p>
+          <p style="color:#6a8e72;">Aktiesparekonto beskattes 17%, frie midler 27%/42%</p>
         </div>
         <div class="tax-extra" id="extraCustom">
           <label>Din skattesats</label>
-          <input type="number" id="customTax" min="0" max="60" value="20" oninput="update()"> %
+          <input type="number" id="customTax" min="0" max="60" value="0" oninput="update()"> %
           <p style="color:#6a8e72;margin-top:8px;">Sæt til 0% for akkumulerende fonde med realisationsbeskatning</p>
         </div>
         <div class="tax-info" id="taxInfo"></div>
@@ -337,14 +334,14 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     <div class="chart-wrap2"><canvas id="lineChart"></canvas></div>
     <p class="footer">
       Beregningerne er vejledende og ikke finansiel rådgivning.<br>
-      Frie midler: 27% op til 79.400 kr aktieindkomst, 42% herover (2026).<br>ASK: 17% lagerbeskatning, maks. indskud 174.200 kr (2026).
+      Frie midler: 27% op til 79.400 kr aktieindkomst, 42% herover (2026).<br>Aktiesparekonto: 17% lagerbeskatning, maks. indskud 174.200 kr (2026).
     </p>
   </div>
  
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-let taxMode = 'ask';
+let taxMode = 'split';
 let exactMonthly = 0;
 let viewMode = 'nominal';
 const FREE_THRESHOLD = 79400;
@@ -422,11 +419,26 @@ function updateSplitFromStart(startVal) {
   document.getElementById('freeAmount').value = Math.round(freeAmt);
 }
  
+function onAskChange() {
+  const start = +document.getElementById('startInput').value || +document.getElementById('start').value;
+  const ask = Math.min(+document.getElementById('askAmount').value || 0, 174200);
+  document.getElementById('askAmount').value = ask;
+  document.getElementById('freeAmount').value = Math.max(0, start - ask);
+  update();
+}
+ 
+function onFreeChange() {
+  const start = +document.getElementById('startInput').value || +document.getElementById('start').value;
+  const free = Math.max(0, +document.getElementById('freeAmount').value || 0);
+  document.getElementById('freeAmount').value = free;
+  document.getElementById('askAmount').value = Math.min(174200, Math.max(0, start - free));
+  update();
+}
+ 
 function setTax(mode, btn) {
   taxMode = mode;
   document.querySelectorAll('.tax-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('extraAsk').classList.toggle('show', mode === 'ask');
   document.getElementById('extraFree').classList.toggle('show', mode === 'free');
   document.getElementById('extraSplit').classList.toggle('show', mode === 'split');
   document.getElementById('extraCustom').classList.toggle('show', mode === 'custom');
@@ -589,7 +601,7 @@ function update() {
  
 renderExpenses();
 update();
-document.getElementById('extraAsk').classList.add('show');
 </script>
 </body>
 </html>
+ 
