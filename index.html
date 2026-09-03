@@ -133,7 +133,7 @@ body {
   border-radius: 10px; padding: 12px; margin-top: 6px;
 }
 .tax-extra.show { display: block; }
-.tax-extra label { font-size: 12px; color: #4a5e50; display: block; margin-bottom: 5px; }
+.tax-extra label { font-size: 12px; color: #8aaa90; display: block; margin-bottom: 5px; }
 .tax-extra input {
   width: 90px; padding: 7px 10px; background: #111a14;
   border: 1px solid #1e2e22; border-radius: 8px;
@@ -258,10 +258,11 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
           <button class="tax-btn" onclick="setTax('split',this)">Blandet</button>
           <button class="tax-btn" onclick="setTax('custom',this)">Brugerdefineret</button>
         </div>
+        <div class="tax-extra" id="extraAsk">
+          <p style="color:#6a8e72;">ASK: 17% lagerbeskatning, maks. indskud 174.200 kr (2026).</p>
+        </div>
         <div class="tax-extra" id="extraFree">
-          <p>27% skat op til <strong style="color:#e8ede9;">79.400 kr</strong> i afkast om året<br>
-          42% skat af alt over 79.400 kr<br>
-          <span style="color:#1e2e22;">Beregnes automatisk ud fra din portefølje</span></p>
+          <p style="color:#6a8e72;">Frie midler: 27% op til 79.400 kr aktieindkomst, 42% herover (2026).</p>
         </div>
         <div class="tax-extra" id="extraSplit">
           <div class="split-row">
@@ -274,11 +275,12 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
               <input type="number" id="freeAmount" value="264100" step="1000" oninput="update()"> kr
             </div>
           </div>
-          <p>ASK beskattes 17%, frie midler 27%/42%</p>
+          <p style="color:#6a8e72;">ASK beskattes 17%, frie midler 27%/42%</p>
         </div>
         <div class="tax-extra" id="extraCustom">
           <label>Din skattesats</label>
           <input type="number" id="customTax" min="0" max="60" value="20" oninput="update()"> %
+          <p style="color:#6a8e72;margin-top:8px;">Sæt til 0% for akkumulerende fonde med realisationsbeskatning</p>
         </div>
         <div class="tax-info" id="taxInfo"></div>
       </div>
@@ -421,6 +423,7 @@ function setTax(mode, btn) {
   taxMode = mode;
   document.querySelectorAll('.tax-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  document.getElementById('extraAsk').classList.toggle('show', mode === 'ask');
   document.getElementById('extraFree').classList.toggle('show', mode === 'free');
   document.getElementById('extraSplit').classList.toggle('show', mode === 'split');
   document.getElementById('extraCustom').classList.toggle('show', mode === 'custom');
