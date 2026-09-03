@@ -248,6 +248,42 @@ hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
     </div>
   </div>
  
+  <!-- MÅL KALKULATOR -->
+  <div class="card">
+    <div class="card-title"><span class="card-title-accent">🎯</span> Hvad er dit mål?</div>
+    <div style="display:flex;gap:8px;margin-bottom:20px;">
+      <button class="toggle-btn active" id="btn-calc" onclick="setCalcMode('forward')">Beregn fremtidig formue</button>
+      <button class="toggle-btn" id="btn-goal" onclick="setCalcMode('goal')">Sæt et mål</button>
+    </div>
+ 
+    <div id="goalSection" style="display:none;">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px;">
+        <div style="flex:1;min-width:160px;">
+          <label style="display:block;font-size:12px;color:#c8d0c8;margin-bottom:6px;">Ønsket formue</label>
+          <input type="number" id="goalAmount" placeholder="eks. 5.000.000" step="100000"
+            style="width:100%;padding:10px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:16px;font-weight:700;color:#ffffff;outline:none;transition:border 0.2s;"
+            onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
+            oninput="calcGoal()">
+        </div>
+        <div style="flex:1;min-width:160px;">
+          <label style="display:block;font-size:12px;color:#c8d0c8;margin-bottom:6px;">Inden for (år)</label>
+          <input type="number" id="goalYears" placeholder="eks. 10" min="1" max="50" value="10"
+            style="width:100%;padding:10px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:16px;font-weight:700;color:#ffffff;outline:none;transition:border 0.2s;"
+            onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
+            oninput="calcGoal()">
+        </div>
+      </div>
+      <div style="background:#0d1510;border:1px solid #2d4a34;border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:13px;color:#c8d0c8;">Du skal spare op om måneden</div>
+          <div style="font-size:11px;color:#909090;margin-top:2px;">Baseret på startkapital og afkast fra sektion 02</div>
+        </div>
+        <div style="font-size:24px;font-weight:800;color:#1D9E75;" id="goalResult">— kr</div>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:#909090;">💡 Justér startkapital og afkast i sektion 02 for at se hvordan det påvirker dit månedlige beløb</div>
+    </div>
+  </div>
+ 
   <div class="card">
     <div class="card-title" style="cursor:pointer;user-select:none;" onclick="toggleAdvanced()">
       <span class="card-title-accent">03</span> Avancerede indstillinger
@@ -359,6 +395,32 @@ let taxMode = 'split';
 let exactMonthly = 0;
 let viewMode = 'nominal';
 let advancedOpen = false;
+let calcMode = 'forward';
+ 
+function setCalcMode(mode) {
+  calcMode = mode;
+  document.getElementById('btn-calc').classList.toggle('active', mode === 'forward');
+  document.getElementById('btn-goal').classList.toggle('active', mode === 'goal');
+  document.getElementById('goalSection').style.display = mode === 'goal' ? 'block' : 'none';
+  if (mode === 'goal') calcGoal();
+}
+ 
+function calcGoal() {
+  const goal  = +document.getElementById('goalAmount').value || 0;
+  const years = +document.getElementById('goalYears').value || 10;
+  const start = +document.getElementById('startInput').value || +document.getElementById('start').value || 0;
+  const rate  = +document.getElementById('rate').value || 7;
+  const netRate = rate * (1 - 0.17) / 100 / 12; // ASK default
+  const n = years * 12;
+  const fvStart = start * Math.pow(1 + netRate, n);
+  const remaining = goal - fvStart;
+  if (remaining <= 0) {
+    document.getElementById('goalResult').textContent = 'Startkapital er nok! 🎉';
+    return;
+  }
+  const monthly = remaining * netRate / (Math.pow(1 + netRate, n) - 1);
+  document.getElementById('goalResult').textContent = Math.round(monthly).toLocaleString('da-DK') + ' kr';
+}
  
 function toggleAdvanced() {
   advancedOpen = !advancedOpen;
@@ -681,4 +743,3 @@ update();
 </script>
 </body>
 </html>
- 
