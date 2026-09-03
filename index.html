@@ -306,7 +306,7 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
   <div class="card">
     <div class="card-title">
       <span class="card-title-accent">04</span> Milepæle
-      <span id="viewLabel" style="font-size:11px;color:#2a3e2e;font-weight:400;margin-left:4px;">— nominelle kroner</span>
+      <span id="viewLabel" style="font-size:11px;color:#6a8e72;font-weight:400;margin-left:4px;">— nominelle kroner</span>
     </div>
     <div class="milestones">
       <div class="metric"><div class="year">5 år</div><div class="num" id="v5">—</div><div class="sub" id="paid5">—</div><div class="gain" id="gain5">—</div></div>
@@ -543,7 +543,7 @@ const lineChart = new Chart(document.getElementById('lineChart'), {
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('da-DK')+' kr' }}},
     scales: {
       x: { grid: { display: false }, ticks: { maxTicksLimit: 11, font: { size: 11 }, color: '#4a5e50' }},
-      y: { grid: { color: '#1e2e22' }, ticks: { color: '#4a5e50', callback: v => (v/1000000).toFixed(1)+' mio.' }}
+      y: { min: 0, grid: { color: '#1e2e22' }, ticks: { color: '#4a5e50', callback: v => (v/1000000).toFixed(1)+' mio.' }}
     }
   }
 });
@@ -584,3 +584,4 @@ update();
 </script>
 </body>
 </html>
+ 
