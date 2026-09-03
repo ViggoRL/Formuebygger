@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formuebygger</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #0a0f0d;
+  color: #e8ede9;
+  padding: 24px;
+}
+ 
+.container { max-width: 820px; margin: 0 auto; }
+ 
+/* Header */
+.header { margin-bottom: 28px; }
+.logo { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.logo-mark {
+  width: 36px; height: 36px; background: #1D9E75;
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; color: #0a0f0d; letter-spacing: -1px;
+}
+.logo-name { font-size: 20px; font-weight: 800; color: #e8ede9; letter-spacing: -0.5px; }
+.logo-name span { color: #1D9E75; }
+.header-sub { font-size: 13px; color: #8aaa90; margin-left: 46px; }
+ 
+/* Cards */
+.card {
+  background: #111a14;
+  border: 1px solid #1e2e22;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 14px;
+}
+.card-title {
+  font-size: 13px; font-weight: 700; color: #8aaa90;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+}
+.card-title-accent { color: #1D9E75; }
+ 
+/* Budget */
+.budget-field label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 6px; }
+.budget-field input[type=number] {
+  width: 100%; padding: 12px 14px;
+  background: #0d1510; border: 1px solid #1e2e22;
+  border-radius: 10px; font-size: 16px; font-weight: 700;
+  color: #e8ede9; outline: none; transition: border 0.2s;
+}
+.budget-field input[type=number]:focus { border-color: #1D9E75; }
+.budget-field input[type=number]::placeholder { color: #2a3e2e; font-weight: 400; }
+ 
+/* Expenses dropdown */
+.expenses-toggle {
+  width: 100%; background: #0d1510; border: 1px solid #1e2e22;
+  border-radius: 10px; padding: 12px 16px; font-size: 13px; font-weight: 600;
+  color: #8aaa90; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 0; transition: all 0.2s;
+}
+.expenses-toggle:hover { border-color: #1D9E75; color: #1D9E75; }
+.expenses-toggle .arrow { transition: transform 0.2s; font-size: 10px; }
+.expenses-toggle.open { border-radius: 10px 10px 0 0; border-color: #1D9E75; color: #1D9E75; }
+.expenses-toggle.open .arrow { transform: rotate(180deg); }
+.expenses-panel {
+  display: none; background: #0d1510;
+  border: 1px solid #1D9E75; border-top: none;
+  border-radius: 0 0 10px 10px; padding: 14px; margin-bottom: 12px;
+}
+.expenses-panel.open { display: block; }
+ 
+.expense-item { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.expense-item input[type=text] {
+  flex: 1.5; padding: 9px 12px; background: #111a14;
+  border: 1px solid #1e2e22; border-radius: 8px;
+  font-size: 13px; outline: none; color: #a0b4a5; transition: border 0.2s;
+}
+.expense-item input[type=text]:focus { border-color: #1D9E75; }
+.expense-item input[type=number] {
+  flex: 1; padding: 9px 12px; background: #111a14;
+  border: 1px solid #1e2e22; border-radius: 8px;
+  font-size: 13px; font-weight: 700; outline: none;
+  min-width: 80px; color: #e8ede9; transition: border 0.2s;
+}
+.expense-item input[type=number]:focus { border-color: #1D9E75; }
+.del-btn { background: none; border: none; color: #2a3e2e; font-size: 20px; cursor: pointer; padding: 2px 6px; transition: color 0.2s; }
+.del-btn:hover { color: #e55; }
+.add-exp-btn {
+  width: 100%; background: none; border: 1px dashed #1e2e22;
+  border-radius: 8px; padding: 8px; font-size: 13px; color: #2a3e2e;
+  cursor: pointer; transition: all 0.2s; margin-top: 4px;
+}
+.add-exp-btn:hover { border-color: #1D9E75; color: #1D9E75; }
+ 
+.result-row {
+  background: #0d1510; border: 1px solid #1e2e22;
+  border-radius: 12px; padding: 16px 18px;
+  display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
+}
+.result-row .lbl { font-size: 13px; color: #4a5e50; }
+.result-row .lbl-sub { font-size: 11px; color: #2a3e2e; margin-top: 2px; }
+.result-row .amt { font-size: 24px; font-weight: 800; color: #1D9E75; }
+.hint { margin-top: 10px; font-size: 12px; color: #6a8e72; }
+ 
+/* Skydere */
+.controls { display: flex; flex-wrap: wrap; gap: 24px; }
+.ctrl { flex: 1; min-width: 160px; }
+.ctrl label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 8px; }
+.ctrl input[type=range] { width: 100%; accent-color: #1D9E75; cursor: pointer; height: 4px; }
+.ctrl .val { font-size: 18px; font-weight: 800; color: #e8ede9; margin-top: 6px; }
+.info-tag {
+  display: inline-block; font-size: 10px; background: #0d2e1e;
+  color: #1D9E75; border-radius: 5px; padding: 2px 7px;
+  margin-left: 6px; font-weight: 700; border: 1px solid #1D9E75;
+}
+ 
+/* Avanceret */
+.adv-grid { display: flex; flex-wrap: wrap; gap: 24px; }
+.adv-item { flex: 1; min-width: 180px; }
+.adv-item label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 8px; }
+.adv-item input[type=range] { width: 100%; accent-color: #3a7bd5; cursor: pointer; }
+.adv-item .val { font-size: 16px; font-weight: 800; color: #3a7bd5; margin-top: 6px; }
+ 
+/* Skat */
+.tax-btns { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
+.tax-btn {
+  padding: 7px 12px; border-radius: 8px;
+  border: 1px solid #2a3e2e; background: #0d1510;
+  font-size: 12px; font-weight: 600; cursor: pointer; color: #8aaa90; transition: all 0.2s;
+}
+.tax-btn.active { background: #0d2e1e; color: #1D9E75; border-color: #1D9E75; }
+.tax-extra {
+  display: none; background: #0d1510; border: 1px solid #1e2e22;
+  border-radius: 10px; padding: 12px; margin-top: 6px;
+}
+.tax-extra.show { display: block; }
+.tax-extra label { font-size: 12px; color: #4a5e50; display: block; margin-bottom: 5px; }
+.tax-extra input {
+  width: 90px; padding: 7px 10px; background: #111a14;
+  border: 1px solid #1e2e22; border-radius: 8px;
+  font-size: 14px; font-weight: 700; outline: none; color: #e8ede9;
+}
+.tax-extra .split-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.tax-extra .split-field { flex: 1; min-width: 110px; }
+.tax-extra p { font-size: 12px; color: #2a3e2e; margin-top: 8px; line-height: 1.6; }
+.tax-info { font-size: 12px; color: #2a5e3a; margin-top: 8px; }
+ 
+/* Vis-toggle */
+.toggle-row { display: flex; gap: 8px; }
+.toggle-btn {
+  padding: 6px 14px; border-radius: 8px;
+  border: 1px solid #2a3e2e; background: #0d1510;
+  font-size: 12px; font-weight: 600; cursor: pointer; color: #8aaa90; transition: all 0.2s;
+}
+.toggle-btn.active { background: #0d2e1e; color: #1D9E75; border-color: #1D9E75; }
+ 
+/* Milepæle */
+.milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.metric {
+  background: #0d1510; border: 1px solid #1e2e22;
+  border-radius: 12px; padding: 16px;
+  transition: border-color 0.2s;
+}
+.metric:hover { border-color: #1D9E75; }
+.metric .year {
+  font-size: 11px; font-weight: 700; color: #1D9E75;
+  text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
+}
+.metric .num { font-size: 16px; font-weight: 800; color: #e8ede9; }
+.metric .sub { font-size: 11px; color: #2a3e2e; margin-top: 4px; }
+.metric .gain { font-size: 11px; color: #1D9E75; margin-top: 3px; font-weight: 700; }
+ 
+/* Grafer */
+.legend { display: flex; gap: 16px; font-size: 12px; color: #8aaa90; margin-bottom: 12px; flex-wrap: wrap; }
+.legend span { display: flex; align-items: center; gap: 5px; }
+.legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.chart-wrap { position: relative; width: 100%; height: 280px; margin-bottom: 8px; }
+.chart-wrap2 { position: relative; width: 100%; height: 220px; }
+hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
+.footer { font-size: 11px; color: #2a3e2e; text-align: center; margin-top: 10px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="container">
+ 
+  <div class="header">
+    <div class="logo">
+      <div class="logo-mark">F</div>
+      <div class="logo-name">Formue<span>bygger</span></div>
+    </div>
+    <div class="header-sub">Byg din fremtidige formue — se hvad rentes rente gør over tid</div>
+  </div>
+ 
+  <!-- BUDGET -->
+  <div class="card">
+    <div class="card-title"><span class="card-title-accent">01</span> Budget & Rådighedsbeløb</div>
+    <div style="margin-bottom:14px;">
+      <div class="budget-field">
+        <label>Udbetalt løn (netto pr. måned)</label>
+        <input type="number" id="netSalary" placeholder="eks. 20.000" step="500" oninput="calcDisposable()">
+      </div>
+    </div>
+ 
+    <button class="expenses-toggle" id="expToggle" onclick="toggleExpenses()">
+      <span>Faste udgifter <span id="expTotal" style="color:#1D9E75;font-weight:700;"></span></span>
+      <span class="arrow">▼</span>
+    </button>
+    <div class="expenses-panel" id="expPanel">
+      <div id="expenseList"></div>
+      <button class="add-exp-btn" onclick="addExpense()">＋ Tilføj udgift</button>
+    </div>
+ 
+    <div class="result-row">
+      <div>
+        <div class="lbl">Månedligt rådighedsbeløb</div>
+        <div class="lbl-sub">Netto løn − alle udgifter</div>
+      </div>
+      <div class="amt" id="disposable">— kr</div>
+    </div>
+    <div class="hint">💡 Opdaterer automatisk skyderen for månedlig opsparing</div>
+  </div>
+ 
+  <!-- PARAMETRE -->
+  <div class="card">
+    <div class="card-title"><span class="card-title-accent">02</span> Investeringsparametre</div>
+    <div class="controls">
+      <div class="ctrl">
+        <label>Månedlig opsparing <span class="info-tag" id="autoTag" style="display:none">AUTO</span></label>
+        <input type="range" id="monthly" min="0" max="50000" step="500" value="12000" oninput="clearAuto();syncSliderToInput('monthly','monthlyInput');update()">
+        <input type="number" id="monthlyInput" value="12000" min="0" max="50000"
+          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #1e2e22;border-radius:8px;font-size:18px;font-weight:800;color:#e8ede9;outline:none;transition:border 0.2s;"
+          onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#1e2e22'"
+          oninput="clearAuto();syncInputToSlider('monthlyInput','monthly');update()">
+      </div>
+      <div class="ctrl">
+        <label>Startkapital</label>
+        <input type="range" id="start" min="0" max="2000000" step="10000" value="400000" oninput="syncSliderToInput('start','startInput');update()">
+        <input type="number" id="startInput" value="400000" min="0" max="2000000"
+          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #1e2e22;border-radius:8px;font-size:18px;font-weight:800;color:#e8ede9;outline:none;transition:border 0.2s;"
+          onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#1e2e22'"
+          oninput="syncInputToSlider('startInput','start');update()">
+      </div>
+      <div class="ctrl">
+        <label>Bruttoafkast (før skat)</label>
+        <input type="range" id="rate" min="1" max="15" step="0.5" value="7" oninput="update()">
+        <div class="val" id="rate-val">7,0 %</div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- AVANCERET -->
+  <div class="card">
+    <div class="card-title"><span class="card-title-accent">03</span> Avancerede indstillinger</div>
+    <div class="adv-grid">
+ 
+      <div class="adv-item" style="min-width:260px;">
+        <label>Skattesats på afkast</label>
+        <div class="tax-btns">
+          <button class="tax-btn active" onclick="setTax('ask',this)">ASK 17%</button>
+          <button class="tax-btn" onclick="setTax('free',this)">Frie midler</button>
+          <button class="tax-btn" onclick="setTax('split',this)">Blandet</button>
+          <button class="tax-btn" onclick="setTax('custom',this)">Brugerdefineret</button>
+        </div>
+        <div class="tax-extra" id="extraFree">
+          <p>27% skat op til <strong style="color:#e8ede9;">61.000 kr</strong> i afkast om året<br>
+          42% skat af alt over 61.000 kr<br>
+          <span style="color:#1e2e22;">Beregnes automatisk ud fra din portefølje</span></p>
+        </div>
+        <div class="tax-extra" id="extraSplit">
+          <div class="split-row">
+            <div class="split-field">
+              <label>Beløb i ASK (maks. 135.900 kr)</label>
+              <input type="number" id="askAmount" value="135900" step="1000" oninput="update()"> kr
+            </div>
+            <div class="split-field">
+              <label>Beløb i frie midler</label>
+              <input type="number" id="freeAmount" value="264100" step="1000" oninput="update()"> kr
+            </div>
+          </div>
+          <p>ASK beskattes 17%, frie midler 27%/42%</p>
+        </div>
+        <div class="tax-extra" id="extraCustom">
+          <label>Din skattesats</label>
+          <input type="number" id="customTax" min="0" max="60" value="20" oninput="update()"> %
+        </div>
+        <div class="tax-info" id="taxInfo"></div>
+      </div>
+ 
+      <div class="adv-item">
+        <label>Forventet inflation</label>
+        <input type="range" id="inflation" min="0" max="6" step="0.5" value="2" oninput="update()">
+        <div class="val" id="inflation-val">2,0 %</div>
+        <div style="margin-top:14px;">
+          <label>Vis graf som</label>
+          <div class="toggle-row">
+            <button class="toggle-btn active" id="btn-nominal" onclick="setView('nominal')">Nominelt</button>
+            <button class="toggle-btn" id="btn-real" onclick="setView('real')">Reel købekraft</button>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="adv-item">
+        <label>Årlig stigning i indbetaling</label>
+        <input type="range" id="salaryGrowth" min="0" max="8" step="0.5" value="3" oninput="update()">
+        <div class="val" id="salaryGrowth-val">3,0 %</div>
+        <div style="margin-top:8px;font-size:12px;color:#2a3e2e;line-height:1.5;">Efterligner lønstigning og inflationsjustering over tid</div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- MILEPÆLE -->
+  <div class="card">
+    <div class="card-title">
+      <span class="card-title-accent">04</span> Milepæle
+      <span id="viewLabel" style="font-size:11px;color:#2a3e2e;font-weight:400;margin-left:4px;">— nominelle kroner</span>
+    </div>
+    <div class="milestones">
+      <div class="metric"><div class="year">5 år</div><div class="num" id="v5">—</div><div class="sub" id="paid5">—</div><div class="gain" id="gain5">—</div></div>
+      <div class="metric"><div class="year">10 år</div><div class="num" id="v10">—</div><div class="sub" id="paid10">—</div><div class="gain" id="gain10">—</div></div>
+      <div class="metric"><div class="year">15 år</div><div class="num" id="v15">—</div><div class="sub" id="paid15">—</div><div class="gain" id="gain15">—</div></div>
+      <div class="metric"><div class="year">20 år</div><div class="num" id="v20">—</div><div class="sub" id="paid20">—</div><div class="gain" id="gain20">—</div></div>
+    </div>
+  </div>
+ 
+  <!-- GRAFER -->
+  <div class="card">
+    <div class="card-title"><span class="card-title-accent">05</span> Din formue over tid</div>
+    <div class="legend">
+      <span><i style="background:#2a4ad5;"></i>Startkapital</span>
+      <span><i style="background:#3a7bd5;"></i>Indbetalinger</span>
+      <span><i style="background:#1D9E75;"></i>Afkast (rentes rente)</span>
+    </div>
+    <div class="chart-wrap"><canvas id="barChart"></canvas></div>
+    <hr>
+    <div class="legend">
+      <span><i style="background:#1D9E75;"></i>Porteføljeværdi</span>
+      <span><i style="background:#3a7bd5;"></i>Samlet indbetalt</span>
+    </div>
+    <div class="chart-wrap2"><canvas id="lineChart"></canvas></div>
+    <p class="footer">
+      Beregningerne er vejledende og ikke finansiel rådgivning.<br>
+      Frie midler: 27% op til 61.000 kr aktieindkomst (2024), 42% herover. ASK: 17% lagerbeskatning, maks. indskud 135.900 kr.
+    </p>
+  </div>
+ 
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+let taxMode = 'ask';
+let exactMonthly = 12000;
+let viewMode = 'nominal';
+const FREE_THRESHOLD = 61000;
+ 
+const expenses = [
+  { name: 'Husleje / bolig', amount: 0 },
+  { name: 'Bil / transport', amount: 0 },
+  { name: 'Mad / husholdning', amount: 0 },
+  { name: 'Abonnementer', amount: 0 },
+  { name: 'Diverse', amount: 0 },
+];
+ 
+function toggleExpenses() {
+  const btn = document.getElementById('expToggle');
+  const panel = document.getElementById('expPanel');
+  btn.classList.toggle('open');
+  panel.classList.toggle('open');
+}
+ 
+function renderExpenses() {
+  const list = document.getElementById('expenseList');
+  list.innerHTML = '';
+  expenses.forEach((exp, i) => {
+    const row = document.createElement('div');
+    row.className = 'expense-item';
+    row.innerHTML = `
+      <input type="text" placeholder="Udgift" value="${exp.name}" oninput="expenses[${i}].name=this.value">
+      <input type="number" placeholder="0" value="${exp.amount||''}" min="0" step="100"
+        oninput="expenses[${i}].amount=+this.value||0;calcDisposable()">
+      <button class="del-btn" onclick="expenses.splice(${i},1);renderExpenses();calcDisposable()">×</button>`;
+    list.appendChild(row);
+  });
+}
+ 
+function addExpense() {
+  expenses.push({ name: '', amount: 0 });
+  renderExpenses();
+}
+ 
+function calcDisposable() {
+  const salary = +document.getElementById('netSalary').value || 0;
+  const total = expenses.reduce((s,e) => s + (+e.amount||0), 0);
+  const disp = salary - total;
+  document.getElementById('expTotal').textContent = total > 0 ? '— ' + total.toLocaleString('da-DK') + ' kr' : '';
+  document.getElementById('disposable').textContent = salary > 0 ? Math.round(disp).toLocaleString('da-DK') + ' kr' : '— kr';
+  if (disp > 0 && salary > 0) {
+    exactMonthly = Math.min(Math.max(Math.round(disp), 0), 50000);
+    document.getElementById('monthly').value = Math.round(exactMonthly / 500) * 500;
+    document.getElementById('monthlyInput').value = exactMonthly;
+    document.getElementById('autoTag').style.display = 'inline-block';
+    update();
+  }
+}
+ 
+function syncSliderToInput(sliderId, inputId) {
+  document.getElementById(inputId).value = document.getElementById(sliderId).value;
+}
+ 
+function syncInputToSlider(inputId, sliderId) {
+  const val = +document.getElementById(inputId).value || 0;
+  document.getElementById(sliderId).value = val;
+}
+ 
+function clearAuto() {
+  document.getElementById('autoTag').style.display = 'none';
+  exactMonthly = null;
+}
+ 
+function updateSplitFromStart(startVal) {
+  if (taxMode !== 'split') return;
+  const askMax = 135900;
+  const askAmt = Math.min(startVal, askMax);
+  const freeAmt = Math.max(0, startVal - askMax);
+  document.getElementById('askAmount').value = Math.round(askAmt);
+  document.getElementById('freeAmount').value = Math.round(freeAmt);
+}
+ 
+function setTax(mode, btn) {
+  taxMode = mode;
+  document.querySelectorAll('.tax-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('extraFree').classList.toggle('show', mode === 'free');
+  document.getElementById('extraSplit').classList.toggle('show', mode === 'split');
+  document.getElementById('extraCustom').classList.toggle('show', mode === 'custom');
+  update();
+}
+ 
+function effectiveTaxRate(grossRate, portfolioValue) {
+  const annualGain = portfolioValue * grossRate / 100;
+  if (taxMode === 'ask') return 0.17;
+  if (taxMode === 'custom') return (+document.getElementById('customTax').value||0) / 100;
+  if (taxMode === 'free') {
+    if (annualGain <= 0) return 0.27;
+    if (annualGain <= FREE_THRESHOLD) return 0.27;
+    const tax = FREE_THRESHOLD * 0.27 + (annualGain - FREE_THRESHOLD) * 0.42;
+    return tax / annualGain;
+  }
+  if (taxMode === 'split') {
+    const askAmt  = +document.getElementById('askAmount').value  || 0;
+    const freeAmt = +document.getElementById('freeAmount').value || 0;
+    const total   = askAmt + freeAmt;
+    if (total === 0) return 0.17;
+    const askGain  = annualGain * (askAmt / total);
+    const freeGain = annualGain * (freeAmt / total);
+    const askTax   = askGain * 0.17;
+    const freeTax  = freeGain <= FREE_THRESHOLD ? freeGain * 0.27 : FREE_THRESHOLD * 0.27 + (freeGain - FREE_THRESHOLD) * 0.42;
+    return (askTax + freeTax) / (annualGain || 1);
+  }
+  return 0.17;
+}
+ 
+function calcNetRate(grossRate, portfolioValue) {
+  return grossRate * (1 - effectiveTaxRate(grossRate, portfolioValue));
+}
+ 
+function setView(mode) {
+  viewMode = mode;
+  document.getElementById('btn-nominal').classList.toggle('active', mode === 'nominal');
+  document.getElementById('btn-real').classList.toggle('active', mode === 'real');
+  document.getElementById('viewLabel').textContent = mode === 'nominal' ? '— nominelle kroner' : '— reel købekraft (dagens kroner)';
+  update();
+}
+ 
+function adjInfl(value, years) {
+  if (viewMode === 'nominal') return value;
+  const inf = +document.getElementById('inflation').value;
+  return value / Math.pow(1 + inf/100, years);
+}
+ 
+function calcFV(start, monthly, grossRate, years, salaryGrow) {
+  let port = start, m = monthly;
+  const sg = salaryGrow / 100;
+  for (let y = 0; y < years; y++) {
+    const nr = calcNetRate(grossRate, port) / 100 / 12;
+    for (let mo = 0; mo < 12; mo++) port = port * (1 + nr) + m;
+    m *= (1 + sg);
+  }
+  return port;
+}
+ 
+function calcPaid(start, monthly, years, salaryGrow) {
+  let total = start, m = monthly;
+  const sg = salaryGrow / 100;
+  for (let y = 0; y < years; y++) { total += m * 12; m *= (1 + sg); }
+  return total;
+}
+ 
+function calcYearlyData(start, monthly, grossRate, years, salaryGrow) {
+  const portfolio = [start], paid = [start];
+  let port = start, m = monthly, totalPaid = start;
+  const sg = salaryGrow / 100;
+  for (let y = 0; y < years; y++) {
+    const nr = calcNetRate(grossRate, port) / 100 / 12;
+    for (let mo = 0; mo < 12; mo++) port = port * (1 + nr) + m;
+    totalPaid += m * 12;
+    portfolio.push(port); paid.push(totalPaid);
+    m *= (1 + sg);
+  }
+  return { portfolio, paid };
+}
+ 
+function fmtM(n) {
+  if (Math.abs(n) >= 1000000) return (n/1000000).toFixed(2).replace('.',',') + ' mio. kr';
+  if (Math.abs(n) >= 1000)    return Math.round(n/1000) + '.000 kr';
+  return Math.round(n).toLocaleString('da-DK') + ' kr';
+}
+ 
+const chartDefaults = {
+  color: '#4a5e50',
+  borderColor: '#1e2e22',
+};
+Chart.defaults.color = '#4a5e50';
+ 
+const barChart = new Chart(document.getElementById('barChart'), {
+  type: 'bar',
+  data: {
+    labels: ['5 år','10 år','15 år','20 år'],
+    datasets: [
+      { label: 'Startkapital',  data: [0,0,0,0], backgroundColor: '#2a4ad5', stack: 's' },
+      { label: 'Indbetalinger', data: [0,0,0,0], backgroundColor: '#3a7bd5', stack: 's' },
+      { label: 'Afkast',        data: [0,0,0,0], backgroundColor: '#1D9E75', stack: 's' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('da-DK')+' kr' }}},
+    scales: {
+      x: { stacked: true, grid: { display: false }, ticks: { color: '#4a5e50' }},
+      y: { stacked: true, grid: { color: '#1e2e22' }, ticks: { color: '#4a5e50', callback: v => (v/1000000).toFixed(1)+' mio.' }}
+    }
+  }
+});
+ 
+const lineChart = new Chart(document.getElementById('lineChart'), {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [
+      { label: 'Porteføljeværdi', data: [], borderColor: '#1D9E75', backgroundColor: 'rgba(29,158,117,0.08)', fill: true, tension: 0.3, pointRadius: 2, borderWidth: 2 },
+      { label: 'Samlet indbetalt', data: [], borderColor: '#3a7bd5', backgroundColor: 'rgba(58,123,213,0.05)', fill: true, tension: 0.1, pointRadius: 0, borderWidth: 1.5, borderDash: [5,4] }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('da-DK')+' kr' }}},
+    scales: {
+      x: { grid: { display: false }, ticks: { maxTicksLimit: 11, font: { size: 11 }, color: '#4a5e50' }},
+      y: { grid: { color: '#1e2e22' }, ticks: { color: '#4a5e50', callback: v => (v/1000000).toFixed(1)+' mio.' }}
+    }
+  }
+});
+ 
+function update() {
+  const monthly = exactMonthly !== null ? exactMonthly : +document.getElementById('monthlyInput').value || +document.getElementById('monthly').value;
+  const start   = +document.getElementById('startInput').value || +document.getElementById('start').value;
+  updateSplitFromStart(start);
+  const grossRate  = +document.getElementById('rate').value;
+  const salaryGrow = +document.getElementById('salaryGrowth').value;
+ 
+  document.getElementById('monthlyInput').value = monthly;
+  document.getElementById('startInput').value  = start;
+  document.getElementById('rate-val').textContent         = grossRate.toFixed(1).replace('.',',')+' %';
+  document.getElementById('inflation-val').textContent    = (+document.getElementById('inflation').value).toFixed(1).replace('.',',')+' %';
+  document.getElementById('salaryGrowth-val').textContent = salaryGrow.toFixed(1).replace('.',',')+' %';
+  document.getElementById('taxInfo').textContent          = '';
+ 
+  [5,10,15,20].forEach(y => {
+    const v  = calcFV(start, monthly, grossRate, y, salaryGrow);
+    const p  = calcPaid(start, monthly, y, salaryGrow);
+    const av = adjInfl(v, y), ap = adjInfl(p, y);
+    document.getElementById('v'+y).textContent    = fmtM(av);
+    document.getElementById('paid'+y).textContent = 'indbetalt: '+fmtM(ap);
+    document.getElementById('gain'+y).textContent = '＋'+fmtM(av-ap)+' afkast';
+  });
+ 
+  barChart.data.datasets[0].data = [5,10,15,20].map(y => adjInfl(start, y));
+  barChart.data.datasets[1].data = [5,10,15,20].map(y => adjInfl(calcPaid(start,monthly,y,salaryGrow)-start, y));
+  barChart.data.datasets[2].data = [5,10,15,20].map(y => adjInfl(calcFV(start,monthly,grossRate,y,salaryGrow)-calcPaid(start,monthly,y,salaryGrow), y));
+  barChart.update();
+ 
+  const { portfolio, paid } = calcYearlyData(start, monthly, grossRate, 20, salaryGrow);
+  lineChart.data.labels = Array.from({length:21},(_,i)=>'År '+i);
+  lineChart.data.datasets[0].data = portfolio.map((v,i) => adjInfl(v,i));
+  lineChart.data.datasets[1].data = paid.map((v,i) => adjInfl(v,i));
+  lineChart.update();
+}
+ 
+renderExpenses();
+update();
+</script>
+</body>
+</html>
+ 
