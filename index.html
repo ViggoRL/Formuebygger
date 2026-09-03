@@ -572,8 +572,8 @@ function update() {
   barChart.data.datasets[1].data = [5,10,15,20].map(y => adjInfl(calcPaid(start,monthly,y,salaryGrow)-start, y));
   barChart.data.datasets[2].data = [5,10,15,20].map(y => adjInfl(calcFV(start,monthly,grossRate,y,salaryGrow)-calcPaid(start,monthly,y,salaryGrow), y));
   barChart.update();
-  const { portfolio, paid } = calcYearlyData(start, monthly, grossRate, 20, salaryGrow);
-  lineChart.data.labels = Array.from({length:21},(_,i)=>'År '+i);
+  const { portfolio, paid } = calcYearlyData(start, monthly, grossRate, 50, salaryGrow);
+  lineChart.data.labels = Array.from({length:51},(_,i)=>'År '+i);
   lineChart.data.datasets[0].data = portfolio.map((v,i) => adjInfl(v,i));
   lineChart.data.datasets[1].data = paid.map((v,i) => adjInfl(v,i));
   lineChart.update();
@@ -584,4 +584,3 @@ update();
 </script>
 </body>
 </html>
- 
