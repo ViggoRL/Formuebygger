@@ -8,9 +8,10 @@
 <meta http-equiv="Expires" content="0">
 <title>Formuebygger</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+input[type=range] { cursor: grab; }
+input[type=range]:active { cursor: grabbing; }
  
-body {
+* { box-sizing: border-box; margin: 0; padding: 0; }
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   background: #0a0f0d;
   color: #e8ede9;
@@ -275,15 +276,15 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
           <button class="tax-btn" onclick="setTax('custom',this)">Brugerdefineret</button>
         </div>
         <div class="tax-extra" id="extraFree">
-          <p>27% skat op til <strong style="color:#e8ede9;">61.000 kr</strong> i afkast om året<br>
-          42% skat af alt over 61.000 kr<br>
+          <p>27% skat op til <strong style="color:#e8ede9;">79.400 kr</strong> i afkast om året<br>
+          42% skat af alt over 79.400 kr<br>
           <span style="color:#1e2e22;">Beregnes automatisk ud fra din portefølje</span></p>
         </div>
         <div class="tax-extra" id="extraSplit">
           <div class="split-row">
             <div class="split-field">
-              <label>Beløb i ASK (maks. 135.900 kr)</label>
-              <input type="number" id="askAmount" value="135900" step="1000" oninput="update()"> kr
+              <label>Beløb i ASK (maks. 174.200 kr)</label>
+              <input type="number" id="askAmount" value="174200" step="1000" oninput="update()"> kr
             </div>
             <div class="split-field">
               <label>Beløb i frie midler</label>
@@ -352,7 +353,7 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     <div class="chart-wrap2"><canvas id="lineChart"></canvas></div>
     <p class="footer">
       Beregningerne er vejledende og ikke finansiel rådgivning.<br>
-      Frie midler: 27% op til 61.000 kr aktieindkomst (2024), 42% herover. ASK: 17% lagerbeskatning, maks. indskud 135.900 kr.
+      Frie midler: 27% op til 79.400 kr aktieindkomst (2026), 42% herover. ASK: 17% lagerbeskatning, maks. indskud 174.200 kr.
     </p>
   </div>
  
@@ -362,7 +363,7 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
 let taxMode = 'ask';
 let exactMonthly = 0;
 let viewMode = 'nominal';
-const FREE_THRESHOLD = 61000;
+const FREE_THRESHOLD = 79400;
  
 const expenses = [
   { name: 'Husleje / bolig', amount: 0 },
@@ -430,7 +431,7 @@ function clearAuto() {
  
 function updateSplitFromStart(startVal) {
   if (taxMode !== 'split') return;
-  const askMax = 135900;
+  const askMax = 174200;
   const askAmt = Math.min(startVal, askMax);
   const freeAmt = Math.max(0, startVal - askMax);
   document.getElementById('askAmount').value = Math.round(askAmt);
