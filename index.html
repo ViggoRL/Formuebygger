@@ -295,7 +295,7 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
             <button class="toggle-btn active" id="btn-nominal" onclick="setView('nominal')">Nominelt</button>
             <button class="toggle-btn" id="btn-real" onclick="setView('real')">Reel købekraft</button>
           </div>
-          <div id="nominal-hint" style="margin-top:8px;font-size:12px;color:#6a8e72;line-height:1.5;">Viser fremtidige kroner — tallene er større men ikke inflationskorrigerede</div>
+          <div id="nominal-hint" style="margin-top:8px;font-size:12px;color:#6a8e72;line-height:1.5;">Viser fremtidige kroner — tager ikke højde for forventet inflation</div>
           <div id="real-hint" style="display:none;margin-top:8px;font-size:12px;color:#6a8e72;line-height:1.5;">Viser hvad pengene er værd i nutidens kroner. Sæt inflation til 2-3%</div>
         </div>
       </div>
@@ -593,4 +593,3 @@ document.getElementById('extraAsk').classList.add('show');
 </script>
 </body>
 </html>
- 
