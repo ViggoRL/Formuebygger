@@ -276,9 +276,21 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
           <p style="color:#6a8e72;">Aktiesparekonto beskattes 17%, frie midler 27%/42%</p>
         </div>
         <div class="tax-extra" id="extraCustom">
-          <label>Din skattesats</label>
-          <input type="number" id="customTax" min="0" max="60" value="0" oninput="update()"> %
-          <p style="color:#6a8e72;margin-top:8px;">Sæt til 0% for akkumulerende fonde med realisationsbeskatning</p>
+          <div class="split-row">
+            <div class="split-field">
+              <label>Aktiesparekonto</label>
+              <div style="font-size:15px;font-weight:700;color:#e8ede9;margin-bottom:6px;" id="customAskDisplay">174.200 kr</div>
+              <label>Skattesats</label>
+              <input type="number" id="customAskRate" value="17" min="0" max="60" oninput="update()"> %
+            </div>
+            <div class="split-field">
+              <label>Frie midler</label>
+              <div style="font-size:15px;font-weight:700;color:#e8ede9;margin-bottom:6px;" id="customFreeDisplay">0 kr</div>
+              <label>Skattesats</label>
+              <input type="number" id="customFreeRate" value="0" min="0" max="60" oninput="update()"> %
+            </div>
+          </div>
+          <p style="color:#6a8e72;margin-top:8px;">Sæt skattesats til 0% for akkumulerende fonde med realisationsbeskatning</p>
         </div>
         <div class="tax-info" id="taxInfo"></div>
       </div>
@@ -411,12 +423,19 @@ function clearAuto() {
 }
  
 function updateSplitFromStart(startVal) {
-  if (taxMode !== 'split') return;
   const askMax = 174200;
   const askAmt = Math.min(startVal, askMax);
   const freeAmt = Math.max(0, startVal - askMax);
-  document.getElementById('askAmount').value = Math.round(askAmt);
-  document.getElementById('freeAmount').value = Math.round(freeAmt);
+  if (taxMode === 'split') {
+    document.getElementById('askAmount').value = Math.round(askAmt);
+    document.getElementById('freeAmount').value = Math.round(freeAmt);
+  }
+  if (taxMode === 'custom') {
+    const askEl = document.getElementById('customAskDisplay');
+    const freeEl = document.getElementById('customFreeDisplay');
+    if (askEl) askEl.textContent = Math.round(askAmt).toLocaleString('da-DK') + ' kr';
+    if (freeEl) freeEl.textContent = Math.round(freeAmt).toLocaleString('da-DK') + ' kr';
+  }
 }
  
 function onAskChange() {
@@ -424,6 +443,22 @@ function onAskChange() {
   const ask = Math.min(+document.getElementById('askAmount').value || 0, 174200);
   document.getElementById('askAmount').value = ask;
   document.getElementById('freeAmount').value = Math.max(0, start - ask);
+  update();
+}
+ 
+function onCustomAskChange() {
+  const start = +document.getElementById('startInput').value || +document.getElementById('start').value;
+  const ask = Math.min(+document.getElementById('customAskAmount').value || 0, 174200);
+  document.getElementById('customAskAmount').value = ask;
+  document.getElementById('customFreeAmount').value = Math.max(0, start - ask);
+  update();
+}
+ 
+function onCustomFreeChange() {
+  const start = +document.getElementById('startInput').value || +document.getElementById('start').value;
+  const free = Math.max(0, +document.getElementById('customFreeAmount').value || 0);
+  document.getElementById('customFreeAmount').value = free;
+  document.getElementById('customAskAmount').value = Math.min(174200, Math.max(0, start - free));
   update();
 }
  
@@ -448,7 +483,18 @@ function setTax(mode, btn) {
 function effectiveTaxRate(grossRate, portfolioValue) {
   const annualGain = portfolioValue * grossRate / 100;
   if (taxMode === 'ask') return 0.17;
-  if (taxMode === 'custom') return (+document.getElementById('customTax').value||0) / 100;
+  if (taxMode === 'custom') {
+    const startVal = +document.getElementById('startInput').value || +document.getElementById('start').value;
+    const askAmt = Math.min(startVal, 174200);
+    const freeAmt = Math.max(0, startVal - 174200);
+    const total = askAmt + freeAmt;
+    if (total === 0) return 0;
+    const askRate = (+document.getElementById('customAskRate').value || 0) / 100;
+    const freeRate = (+document.getElementById('customFreeRate').value || 0) / 100;
+    const askGain = annualGain * (askAmt / total);
+    const freeGain = annualGain * (freeAmt / total);
+    return (askGain * askRate + freeGain * freeRate) / (annualGain || 1);
+  }
   if (taxMode === 'free') {
     if (annualGain <= 0) return 0.27;
     if (annualGain <= FREE_THRESHOLD) return 0.27;
@@ -604,4 +650,3 @@ update();
 </script>
 </body>
 </html>
- 
