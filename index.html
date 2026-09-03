@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Formuebygger</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -159,6 +162,13 @@ body {
  
 /* Milepæle */
 .milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 600px) {
+  .milestones { grid-template-columns: repeat(2, 1fr); }
+  .controls { gap: 14px; }
+  .adv-grid { gap: 14px; }
+  .card { padding: 18px 16px; }
+  .metric .num { font-size: 15px; }
+}
 .metric {
   background: #0d1510; border: 1px solid #1e2e22;
   border-radius: 12px; padding: 16px;
