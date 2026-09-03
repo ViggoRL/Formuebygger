@@ -229,16 +229,16 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
     <div class="controls">
       <div class="ctrl">
         <label>Månedlig opsparing <span class="info-tag" id="autoTag" style="display:none">AUTO</span></label>
-        <input type="range" id="monthly" min="0" max="50000" step="500" value="12000" oninput="clearAuto();syncSliderToInput('monthly','monthlyInput');update()">
-        <input type="number" id="monthlyInput" value="12000" min="0" max="50000"
+        <input type="range" id="monthly" min="0" max="50000" step="500" value="0" oninput="clearAuto();syncSliderToInput('monthly','monthlyInput');update()">
+        <input type="number" id="monthlyInput" value="0" min="0" max="50000"
           style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #1e2e22;border-radius:8px;font-size:18px;font-weight:800;color:#e8ede9;outline:none;transition:border 0.2s;"
           onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#1e2e22'"
           oninput="clearAuto();syncInputToSlider('monthlyInput','monthly');update()">
       </div>
       <div class="ctrl">
         <label>Startkapital</label>
-        <input type="range" id="start" min="0" max="2000000" step="10000" value="400000" oninput="syncSliderToInput('start','startInput');update()">
-        <input type="number" id="startInput" value="400000" min="0" max="2000000"
+        <input type="range" id="start" min="0" max="2000000" step="10000" value="0" oninput="syncSliderToInput('start','startInput');update()">
+        <input type="number" id="startInput" value="0" min="0" max="2000000"
           style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #1e2e22;border-radius:8px;font-size:18px;font-weight:800;color:#e8ede9;outline:none;transition:border 0.2s;"
           onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#1e2e22'"
           oninput="syncInputToSlider('startInput','start');update()">
@@ -350,7 +350,7 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 let taxMode = 'ask';
-let exactMonthly = 12000;
+let exactMonthly = 0;
 let viewMode = 'nominal';
 const FREE_THRESHOLD = 61000;
  
