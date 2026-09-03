@@ -13,7 +13,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   background: #0a0f0d;
-  color: #e8ede9;
+  color: #ffffff;
   padding: 24px;
 }
  
@@ -26,38 +26,38 @@ body {
   border-radius: 10px; display: flex; align-items: center; justify-content: center;
   font-size: 18px; font-weight: 900; color: #0a0f0d; letter-spacing: -1px;
 }
-.logo-name { font-size: 20px; font-weight: 800; color: #e8ede9; letter-spacing: -0.5px; }
+.logo-name { font-size: 20px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
 .logo-name span { color: #1D9E75; }
-.header-sub { font-size: 13px; color: #8aaa90; margin-left: 46px; }
+.header-sub { font-size: 13px; color: #c8d0c8; margin-left: 46px; }
  
 .card {
   background: #111a14;
-  border: 1px solid #1e2e22;
+  border: 1px solid #2d4a34;
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 14px;
 }
 .card-title {
-  font-size: 13px; font-weight: 700; color: #8aaa90;
+  font-size: 13px; font-weight: 700; color: #c8d0c8;
   text-transform: uppercase; letter-spacing: 0.8px;
   margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
 }
 .card-title-accent { color: #1D9E75; }
  
-.budget-field label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 6px; }
+.budget-field label { display: block; font-size: 12px; color: #c8d0c8; margin-bottom: 6px; }
 .budget-field input[type=number] {
   width: 100%; padding: 12px 14px;
-  background: #111a14; border: 1px solid #2a3e2e;
+  background: #111a14; border: 1px solid #909090;
   border-radius: 10px; font-size: 16px; font-weight: 700;
-  color: #e8ede9; outline: none; transition: border 0.2s;
+  color: #ffffff; outline: none; transition: border 0.2s;
 }
 .budget-field input[type=number]:focus { border-color: #1D9E75; }
-.budget-field input[type=number]::placeholder { color: #4a5e50; font-weight: 400; }
+.budget-field input[type=number]::placeholder { color: #c8d0c8; font-weight: 400; }
  
 .expenses-toggle {
-  width: 100%; background: #0d1510; border: 1px solid #1e2e22;
+  width: 100%; background: #0d1510; border: 1px solid #2d4a34;
   border-radius: 10px; padding: 12px 16px; font-size: 13px; font-weight: 600;
-  color: #8aaa90; cursor: pointer; display: flex; justify-content: space-between;
+  color: #c8d0c8; cursor: pointer; display: flex; justify-content: space-between;
   align-items: center; margin-bottom: 0; transition: all 0.2s;
 }
 .expenses-toggle:hover { border-color: #1D9E75; color: #1D9E75; }
@@ -74,41 +74,41 @@ body {
 .expense-item { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
 .expense-item input[type=text] {
   flex: 1.5; padding: 9px 12px; background: #111a14;
-  border: 1px solid #1e2e22; border-radius: 8px;
-  font-size: 13px; outline: none; color: #a0b4a5; transition: border 0.2s;
+  border: 1px solid #2d4a34; border-radius: 8px;
+  font-size: 13px; outline: none; color: #c0c0c0; transition: border 0.2s;
 }
 .expense-item input[type=text]:focus { border-color: #1D9E75; }
 .expense-item input[type=number] {
   flex: 1; padding: 9px 12px; background: #111a14;
-  border: 1px solid #1e2e22; border-radius: 8px;
+  border: 1px solid #2d4a34; border-radius: 8px;
   font-size: 13px; font-weight: 700; outline: none;
-  min-width: 80px; color: #e8ede9; transition: border 0.2s;
+  min-width: 80px; color: #ffffff; transition: border 0.2s;
 }
 .expense-item input[type=number]:focus { border-color: #1D9E75; }
-.del-btn { background: none; border: none; color: #2a3e2e; font-size: 20px; cursor: pointer; padding: 2px 6px; transition: color 0.2s; }
+.del-btn { background: none; border: none; color: #909090; font-size: 20px; cursor: pointer; padding: 2px 6px; transition: color 0.2s; }
 .del-btn:hover { color: #e55; }
 .add-exp-btn {
-  width: 100%; background: none; border: 1px dashed #1e2e22;
-  border-radius: 8px; padding: 8px; font-size: 13px; color: #2a3e2e;
+  width: 100%; background: none; border: 1px dashed #2d4a34;
+  border-radius: 8px; padding: 8px; font-size: 13px; color: #909090;
   cursor: pointer; transition: all 0.2s; margin-top: 4px;
 }
 .add-exp-btn:hover { border-color: #1D9E75; color: #1D9E75; }
  
 .result-row {
-  background: #111a14; border: 1px solid #2a3e2e;
+  background: #111a14; border: 1px solid #909090;
   border-radius: 12px; padding: 16px 18px;
   display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
 }
-.result-row .lbl { font-size: 13px; color: #8aaa90; }
-.result-row .lbl-sub { font-size: 11px; color: #6a8e72; margin-top: 2px; }
+.result-row .lbl { font-size: 13px; color: #c8d0c8; }
+.result-row .lbl-sub { font-size: 11px; color: #909090; margin-top: 2px; }
 .result-row .amt { font-size: 24px; font-weight: 800; color: #1D9E75; }
-.hint { margin-top: 10px; font-size: 12px; color: #6a8e72; }
+.hint { margin-top: 10px; font-size: 12px; color: #909090; }
  
 .controls { display: flex; flex-wrap: wrap; gap: 24px; }
 .ctrl { flex: 1; min-width: 160px; }
-.ctrl label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 8px; }
+.ctrl label { display: block; font-size: 12px; color: #c8d0c8; margin-bottom: 8px; }
 .ctrl input[type=range] { width: 100%; accent-color: #1D9E75; cursor: pointer; height: 4px; }
-.ctrl .val { font-size: 18px; font-weight: 800; color: #e8ede9; margin-top: 6px; }
+.ctrl .val { font-size: 18px; font-weight: 800; color: #ffffff; margin-top: 6px; }
 .info-tag {
   display: inline-block; font-size: 10px; background: #0d2e1e;
   color: #1D9E75; border-radius: 5px; padding: 2px 7px;
@@ -117,38 +117,38 @@ body {
  
 .adv-grid { display: flex; flex-wrap: wrap; gap: 24px; }
 .adv-item { flex: 1; min-width: 180px; }
-.adv-item label { display: block; font-size: 12px; color: #8aaa90; margin-bottom: 8px; }
+.adv-item label { display: block; font-size: 12px; color: #c8d0c8; margin-bottom: 8px; }
 .adv-item input[type=range] { width: 100%; accent-color: #3a7bd5; cursor: pointer; }
 .adv-item .val { font-size: 16px; font-weight: 800; color: #3a7bd5; margin-top: 6px; }
  
 .tax-btns { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
 .tax-btn {
   padding: 7px 12px; border-radius: 8px;
-  border: 1px solid #2a3e2e; background: #0d1510;
-  font-size: 12px; font-weight: 600; cursor: pointer; color: #8aaa90; transition: all 0.2s;
+  border: 1px solid #909090; background: #0d1510;
+  font-size: 12px; font-weight: 600; cursor: pointer; color: #c8d0c8; transition: all 0.2s;
 }
 .tax-btn.active { background: #0d2e1e; color: #1D9E75; border-color: #1D9E75; }
 .tax-extra {
-  display: none; background: #0d1510; border: 1px solid #1e2e22;
+  display: none; background: #0d1510; border: 1px solid #2d4a34;
   border-radius: 10px; padding: 12px; margin-top: 6px;
 }
 .tax-extra.show { display: block; }
-.tax-extra label { font-size: 12px; color: #8aaa90; display: block; margin-bottom: 5px; }
+.tax-extra label { font-size: 12px; color: #c8d0c8; display: block; margin-bottom: 5px; }
 .tax-extra input {
   width: 90px; padding: 7px 10px; background: #111a14;
-  border: 1px solid #1e2e22; border-radius: 8px;
-  font-size: 14px; font-weight: 700; outline: none; color: #e8ede9;
+  border: 1px solid #2d4a34; border-radius: 8px;
+  font-size: 14px; font-weight: 700; outline: none; color: #ffffff;
 }
 .tax-extra .split-row { display: flex; gap: 12px; flex-wrap: wrap; }
 .tax-extra .split-field { flex: 1; min-width: 110px; }
-.tax-extra p { font-size: 12px; color: #2a3e2e; margin-top: 8px; line-height: 1.6; }
-.tax-info { font-size: 12px; color: #2a5e3a; margin-top: 8px; }
+.tax-extra p { font-size: 12px; color: #909090; margin-top: 8px; line-height: 1.6; }
+.tax-info { font-size: 12px; color: #909090; margin-top: 8px; }
  
 .toggle-row { display: flex; gap: 8px; }
 .toggle-btn {
   padding: 6px 14px; border-radius: 8px;
-  border: 1px solid #2a3e2e; background: #0d1510;
-  font-size: 12px; font-weight: 600; cursor: pointer; color: #8aaa90; transition: all 0.2s;
+  border: 1px solid #909090; background: #0d1510;
+  font-size: 12px; font-weight: 600; cursor: pointer; color: #c8d0c8; transition: all 0.2s;
 }
 .toggle-btn.active { background: #0d2e1e; color: #1D9E75; border-color: #1D9E75; }
  
@@ -161,7 +161,7 @@ body {
   .metric .num { font-size: 15px; }
 }
 .metric {
-  background: #0d1510; border: 1px solid #1e2e22;
+  background: #0d1510; border: 1px solid #2d4a34;
   border-radius: 12px; padding: 16px;
   transition: border-color 0.2s;
 }
@@ -170,17 +170,17 @@ body {
   font-size: 11px; font-weight: 700; color: #1D9E75;
   text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
 }
-.metric .num { font-size: 16px; font-weight: 800; color: #e8ede9; }
-.metric .sub { font-size: 11px; color: #2a3e2e; margin-top: 4px; }
+.metric .num { font-size: 16px; font-weight: 800; color: #ffffff; }
+.metric .sub { font-size: 11px; color: #909090; margin-top: 4px; }
 .metric .gain { font-size: 11px; color: #1D9E75; margin-top: 3px; font-weight: 700; }
  
-.legend { display: flex; gap: 16px; font-size: 12px; color: #8aaa90; margin-bottom: 12px; flex-wrap: wrap; }
+.legend { display: flex; gap: 16px; font-size: 12px; color: #c8d0c8; margin-bottom: 12px; flex-wrap: wrap; }
 .legend span { display: flex; align-items: center; gap: 5px; }
 .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
 .chart-wrap { position: relative; width: 100%; height: 280px; margin-bottom: 8px; }
 .chart-wrap2 { position: relative; width: 100%; height: 220px; }
-hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
-.footer { font-size: 11px; color: #6a8e72; text-align: center; margin-top: 10px; line-height: 1.6; }
+hr { border: none; border-top: 1px solid #2d4a34; margin: 20px 0; }
+.footer { font-size: 11px; color: #909090; text-align: center; margin-top: 10px; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -227,41 +227,42 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
         <label>Månedlig opsparing <span class="info-tag" id="autoTag" style="display:none">AUTO</span></label>
         <input type="range" id="monthly" min="0" max="50000" step="500" value="0" oninput="clearAuto();syncSliderToInput('monthly','monthlyInput');update()">
         <input type="number" id="monthlyInput" value="0" min="0" max="50000"
-          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #1e2e22;border-radius:8px;font-size:18px;font-weight:800;color:#e8ede9;outline:none;transition:border 0.2s;"
-          onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#1e2e22'"
+          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:18px;font-weight:800;color:#ffffff;outline:none;transition:border 0.2s;"
+          onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
           oninput="clearAuto();syncInputToSlider('monthlyInput','monthly');update()">
       </div>
       <div class="ctrl">
         <label>Startkapital</label>
         <input type="range" id="start" min="0" max="2000000" step="10000" value="0" oninput="syncSliderToInput('start','startInput');update()">
         <input type="number" id="startInput" value="0" min="0" max="2000000"
-          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #1e2e22;border-radius:8px;font-size:18px;font-weight:800;color:#e8ede9;outline:none;transition:border 0.2s;"
-          onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#1e2e22'"
+          style="margin-top:6px;width:100%;padding:8px 12px;background:#0d1510;border:1px solid #2d4a34;border-radius:8px;font-size:18px;font-weight:800;color:#ffffff;outline:none;transition:border 0.2s;"
+          onfocus="this.style.borderColor='#1D9E75'" onblur="this.style.borderColor='#2d4a34'"
           oninput="syncInputToSlider('startInput','start');update()">
       </div>
       <div class="ctrl">
         <label>Bruttoafkast (før skat)</label>
         <input type="range" id="rate" min="1" max="15" step="0.5" value="7" oninput="update()">
         <div class="val" id="rate-val">7,0 %</div>
-        <div style="margin-top:6px;font-size:12px;color:#6a8e72;line-height:1.5;">Global indeksfond: historisk 8-10% nominelt, 5-7% efter inflation</div>
+        <div style="margin-top:6px;font-size:12px;color:#909090;line-height:1.5;">Global indeksfond: historisk 8-10% nominelt, 5-7% efter inflation</div>
       </div>
     </div>
   </div>
  
   <div class="card">
-    <div class="card-title"><span class="card-title-accent">03</span> Avancerede indstillinger</div>
+    <div class="card-title" style="cursor:pointer;user-select:none;" onclick="toggleAdvanced()">
+      <span class="card-title-accent">03</span> Avancerede indstillinger
+      <span id="advToggleIcon" style="margin-left:auto;font-size:14px;color:#1D9E75;">+ Vis</span>
+    </div>
+    <div id="advContent" style="display:none;">
     <div class="adv-grid">
       <div class="adv-item" style="min-width:260px;">
         <label>Skattesats på afkast</label>
         <div class="tax-btns">
           <button class="tax-btn active" onclick="setTax('split',this)">Aktiesparekonto & Frie midler</button>
-          <button class="tax-btn" onclick="setTax('free',this)">Frie midler</button>
           <button class="tax-btn" onclick="setTax('custom',this)">Brugerdefineret</button>
         </div>
         <div class="tax-extra show" id="extraAsk" style="display:none"></div>
-        <div class="tax-extra" id="extraFree">
-          <p style="color:#6a8e72;">Frie midler: 27% op til 79.400 kr aktieindkomst, 42% herover (2026).</p>
-        </div>
+        <div class="tax-extra" id="extraFree" style="display:none"></div>
         <div class="tax-extra show" id="extraSplit">
           <div class="split-row">
             <div class="split-field">
@@ -273,24 +274,24 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
               <input type="number" id="freeAmount" value="264100" step="1000" oninput="onFreeChange()"> kr
             </div>
           </div>
-          <p style="color:#6a8e72;">Aktiesparekonto beskattes 17%, frie midler 27%/42%</p>
+          <p style="color:#909090;">Aktiesparekonto beskattes 17%, frie midler 27%/42%</p>
         </div>
         <div class="tax-extra" id="extraCustom">
           <div class="split-row">
             <div class="split-field">
               <label>Aktiesparekonto</label>
-              <div style="font-size:15px;font-weight:700;color:#e8ede9;margin-bottom:6px;" id="customAskDisplay">174.200 kr</div>
+              <div style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;padding:7px 10px;background:#111a14;border:1px solid #2d4a34;border-radius:8px;" id="customAskDisplay">174.200 kr</div>
               <label>Skattesats</label>
               <input type="number" id="customAskRate" value="17" min="0" max="60" oninput="update()"> %
             </div>
             <div class="split-field">
               <label>Frie midler</label>
-              <div style="font-size:15px;font-weight:700;color:#e8ede9;margin-bottom:6px;" id="customFreeDisplay">0 kr</div>
+              <div style="font-size:15px;font-weight:700;color:#ffffff;margin-bottom:6px;padding:7px 10px;background:#111a14;border:1px solid #2d4a34;border-radius:8px;" id="customFreeDisplay">0 kr</div>
               <label>Skattesats</label>
               <input type="number" id="customFreeRate" value="0" min="0" max="60" oninput="update()"> %
             </div>
           </div>
-          <p style="color:#6a8e72;margin-top:8px;">Sæt skattesats til 0% for akkumulerende fonde med realisationsbeskatning</p>
+          <p style="color:#909090;margin-top:8px;">Sæt skattesats til 0% for akkumulerende fonde med realisationsbeskatning</p>
         </div>
         <div class="tax-info" id="taxInfo"></div>
       </div>
@@ -304,23 +305,24 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
             <button class="toggle-btn active" id="btn-nominal" onclick="setView('nominal')">Nominelt</button>
             <button class="toggle-btn" id="btn-real" onclick="setView('real')">Reel købekraft</button>
           </div>
-          <div id="nominal-hint" style="margin-top:8px;font-size:12px;color:#6a8e72;line-height:1.5;">Viser fremtidige kroner — tager ikke højde for forventet inflation</div>
-          <div id="real-hint" style="display:none;margin-top:8px;font-size:12px;color:#6a8e72;line-height:1.5;">Viser hvad pengene er værd i nutidens kroner. Sæt inflation til 2-3%</div>
+          <div id="nominal-hint" style="margin-top:8px;font-size:12px;color:#909090;line-height:1.5;">Viser fremtidige kroner — tager ikke højde for forventet inflation</div>
+          <div id="real-hint" style="display:none;margin-top:8px;font-size:12px;color:#909090;line-height:1.5;">Viser hvad pengene er værd i nutidens kroner. Sæt inflation til 2-3%</div>
         </div>
       </div>
       <div class="adv-item">
         <label>Årlig stigning i indbetaling</label>
         <input type="range" id="salaryGrowth" min="0" max="8" step="0.5" value="3" oninput="update()">
         <div class="val" id="salaryGrowth-val">3,0 %</div>
-        <div style="margin-top:8px;font-size:12px;color:#6a8e72;line-height:1.5;">Sæt til din forventede lønstigning — typisk 2-4% om året</div>
+        <div style="margin-top:8px;font-size:12px;color:#909090;line-height:1.5;">Sæt til din forventede lønstigning — typisk 2-4% om året</div>
       </div>
     </div>
+  </div><!-- end advContent -->
   </div>
  
   <div class="card">
     <div class="card-title">
       <span class="card-title-accent">04</span> Milepæle
-      <span id="viewLabel" style="font-size:11px;color:#6a8e72;font-weight:400;margin-left:4px;">— nominelle kroner</span>
+      <span id="viewLabel" style="font-size:11px;color:#909090;font-weight:400;margin-left:4px;">— nominelle kroner</span>
     </div>
     <div class="milestones">
       <div class="metric"><div class="year">5 år</div><div class="num" id="v5">—</div><div class="sub" id="paid5">—</div><div class="gain" id="gain5">—</div></div>
@@ -356,6 +358,26 @@ hr { border: none; border-top: 1px solid #1e2e22; margin: 20px 0; }
 let taxMode = 'split';
 let exactMonthly = 0;
 let viewMode = 'nominal';
+let advancedOpen = false;
+ 
+function toggleAdvanced() {
+  advancedOpen = !advancedOpen;
+  document.getElementById('advContent').style.display = advancedOpen ? 'block' : 'none';
+  document.getElementById('advToggleIcon').textContent = advancedOpen ? '− Skjul' : '+ Vis';
+  update();
+}
+ 
+function getEffectiveSettings() {
+  if (!advancedOpen) {
+    return { taxMode: 'none', inflation: 0, salaryGrow: 0, viewMode: 'nominal' };
+  }
+  return {
+    taxMode: taxMode,
+    inflation: +document.getElementById('inflation').value,
+    salaryGrow: +document.getElementById('salaryGrowth').value,
+    viewMode: viewMode
+  };
+}
 const FREE_THRESHOLD = 79400;
  
 const expenses = [
@@ -481,6 +503,7 @@ function setTax(mode, btn) {
 }
  
 function effectiveTaxRate(grossRate, portfolioValue) {
+  if (!advancedOpen) return 0;
   const annualGain = portfolioValue * grossRate / 100;
   if (taxMode === 'ask') return 0.17;
   if (taxMode === 'custom') {
@@ -573,7 +596,7 @@ function fmtM(n) {
   return Math.round(n).toLocaleString('da-DK') + ' kr';
 }
  
-Chart.defaults.color = '#4a5e50';
+Chart.defaults.color = '#c8d0c8';
  
 const barChart = new Chart(document.getElementById('barChart'), {
   type: 'bar',
@@ -589,8 +612,8 @@ const barChart = new Chart(document.getElementById('barChart'), {
     responsive: true, maintainAspectRatio: false,
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('da-DK')+' kr' }}},
     scales: {
-      x: { stacked: true, grid: { display: false }, ticks: { color: '#4a5e50' }},
-      y: { stacked: true, grid: { color: '#1e2e22' }, ticks: { color: '#4a5e50', callback: v => (v/1000000).toFixed(1)+' mio.' }}
+      x: { stacked: true, grid: { display: false }, ticks: { color: '#c8d0c8' }},
+      y: { stacked: true, grid: { color: '#2d4a34' }, ticks: { color: '#c8d0c8', callback: v => (v/1000000).toFixed(1)+' mio.' }}
     }
   }
 });
@@ -608,8 +631,8 @@ const lineChart = new Chart(document.getElementById('lineChart'), {
     responsive: true, maintainAspectRatio: false,
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' '+ctx.dataset.label+': '+Math.round(ctx.raw).toLocaleString('da-DK')+' kr' }}},
     scales: {
-      x: { grid: { display: false }, ticks: { maxTicksLimit: 11, font: { size: 11 }, color: '#4a5e50' }},
-      y: { min: 0, grid: { color: '#1e2e22' }, ticks: { color: '#4a5e50', callback: v => (v/1000000).toFixed(1)+' mio.' }}
+      x: { grid: { display: false }, ticks: { maxTicksLimit: 11, font: { size: 11 }, color: '#c8d0c8' }},
+      y: { min: 0, grid: { color: '#2d4a34' }, ticks: { color: '#c8d0c8', callback: v => (v/1000000).toFixed(1)+' mio.' }}
     }
   }
 });
@@ -619,7 +642,15 @@ function update() {
   const start   = +document.getElementById('startInput').value || +document.getElementById('start').value;
   updateSplitFromStart(start);
   const grossRate  = +document.getElementById('rate').value;
-  const salaryGrow = +document.getElementById('salaryGrowth').value;
+  const settings   = getEffectiveSettings();
+  const salaryGrow = settings.salaryGrow;
+  const inflation  = settings.inflation;
+  const vMode      = settings.viewMode;
+  function adjInflLocal(value, years) {
+    if (vMode === 'nominal') return value;
+    return value / Math.pow(1 + inflation/100, years);
+  }
+ 
   document.getElementById('monthlyInput').value = monthly;
   document.getElementById('startInput').value  = start;
   document.getElementById('rate-val').textContent         = grossRate.toFixed(1).replace('.',',')+' %';
@@ -629,19 +660,19 @@ function update() {
   [5,10,15,20].forEach(y => {
     const v  = calcFV(start, monthly, grossRate, y, salaryGrow);
     const p  = calcPaid(start, monthly, y, salaryGrow);
-    const av = adjInfl(v, y), ap = adjInfl(p, y);
+    const av = adjInflLocal(v, y), ap = adjInflLocal(p, y);
     document.getElementById('v'+y).textContent    = fmtM(av);
     document.getElementById('paid'+y).textContent = 'indbetalt: '+fmtM(ap);
     document.getElementById('gain'+y).textContent = '＋'+fmtM(av-ap)+' afkast';
   });
-  barChart.data.datasets[0].data = [5,10,15,20].map(y => adjInfl(start, y));
-  barChart.data.datasets[1].data = [5,10,15,20].map(y => adjInfl(calcPaid(start,monthly,y,salaryGrow)-start, y));
-  barChart.data.datasets[2].data = [5,10,15,20].map(y => adjInfl(calcFV(start,monthly,grossRate,y,salaryGrow)-calcPaid(start,monthly,y,salaryGrow), y));
+  barChart.data.datasets[0].data = [5,10,15,20].map(y => adjInflLocal(start, y));
+  barChart.data.datasets[1].data = [5,10,15,20].map(y => adjInflLocal(calcPaid(start,monthly,y,salaryGrow)-start, y));
+  barChart.data.datasets[2].data = [5,10,15,20].map(y => adjInflLocal(calcFV(start,monthly,grossRate,y,salaryGrow)-calcPaid(start,monthly,y,salaryGrow), y));
   barChart.update();
   const { portfolio, paid } = calcYearlyData(start, monthly, grossRate, 50, salaryGrow);
   lineChart.data.labels = Array.from({length:51},(_,i)=>'År '+i);
-  lineChart.data.datasets[0].data = portfolio.map((v,i) => adjInfl(v,i));
-  lineChart.data.datasets[1].data = paid.map((v,i) => adjInfl(v,i));
+  lineChart.data.datasets[0].data = portfolio.map((v,i) => adjInflLocal(v,i));
+  lineChart.data.datasets[1].data = paid.map((v,i) => adjInflLocal(v,i));
   lineChart.update();
 }
  
@@ -650,3 +681,4 @@ update();
 </script>
 </body>
 </html>
+ 
